@@ -1,97 +1,14 @@
 import { useState } from "react";
 import { Bloom, BloomSeam, BloomWatermark } from "./Motif";
-
-/* ---------------------------------- Hero ---------------------------------- */
-
-export function Hero() {
-  return (
-    <section id="top" className="relative overflow-hidden">
-      <BloomWatermark className="-left-20 -top-10 h-[26rem] w-[26rem]" />
-      <BloomWatermark className="-right-24 bottom-0 h-72 w-72" />
-      <div className="relative mx-auto max-w-6xl px-5 pt-20 pb-24 sm:pt-28">
-        <div className="max-w-3xl">
-          
-          <h1 className="mt-6 text-4xl leading-[1.05] sm:text-6xl">
-            You know your child.
-            <span className="mt-2 block brand-text">Ospira shows you the rest.</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            We measure four dimensions of your child's inner world, then coach you — the parent — on
-            what to do with what we find. No generic advice. No labels.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              href="#quiz"
-              className="rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-lift)] transition-transform hover:-translate-y-0.5"
-            >
-              Take the 90-second quiz
-            </a>
-            <a
-              href="#how-it-works"
-              className="rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold transition-colors hover:border-primary/50"
-            >
-              See how Ospira works
-            </a>
-          </div>
-          <dl className="mt-14 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-            {[
-              ["4", "dimensions measured"],
-              ["12k+", "parents coached"],
-              ["1:1", "coach per family"],
-              ["6 wks", "typical programme"],
-            ].map(([n, l]) => (
-              <div key={l}>
-                <dt className="font-display text-2xl font-semibold">{n}</dt>
-                <dd className="mt-1 text-xs leading-snug text-muted-foreground">{l}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------ How it works ------------------------------ */
-
-export function HowItWorks() {
-  return (
-    <section id="how-it-works" className="mx-auto max-w-6xl px-5 pb-24">
-      <div className="surface-card relative overflow-hidden p-7 sm:p-10">
-        <BloomWatermark className="-right-10 -bottom-16 h-64 w-64" />
-        <div className="relative grid gap-8 md:grid-cols-[1.1fr_1fr] md:items-center">
-          <div>
-            <p className="eyebrow text-sky-foreground">See how Ospira works</p>
-            <h2 className="mt-3 text-3xl leading-tight sm:text-4xl">
-              Sixty seconds is enough to understand it.
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Assessment, then coaching. Watch the short version — no form, no pressure.
-            </p>
-            <a
-              href="#quiz"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary"
-            >
-              Watch video <span aria-hidden>→</span>
-            </a>
-          </div>
-          <div className="relative aspect-video overflow-hidden rounded-2xl ink-panel">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-sun text-sun-foreground shadow-[var(--shadow-lift)]">
-                <svg viewBox="0 0 24 24" className="ml-1 h-6 w-6" fill="currentColor" aria-hidden>
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </span>
-            </div>
-            <span className="absolute bottom-3 left-4 text-xs font-semibold tracking-widest text-ink-foreground/70 uppercase">
-              01:00 · Overview
-            </span>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+export { LandingHero as Hero } from "./LandingHero";
+export { HowItWorksBanner as HowItWorks } from "./HowItWorksBanner";
+export { NoticeKnowDo } from "./NoticeKnowDo";
+export { HowOspiraCompares } from "./HowOspiraCompares";
+export { FullPictureAssessment } from "./FullPictureAssessment";
+export { WaysWeCanHelp } from "./WaysWeCanHelp";
+export { SimpleJourney } from "./SimpleJourney";
+export { WhyTrustUs } from "./WhyTrustUs";
+export { FaqSection } from "./FaqSection";
 
 /* --------------------------- What Ospira is ------------------------------- */
 

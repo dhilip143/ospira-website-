@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Fraunces', serif;
+  --font-sans: 'DM Sans', sans-serif;
+  
+  --color-primary: #7033a8;
+  --color-primary-hover: #581c87;
+  --color-primary-foreground: #ffffff;
+
+  --color-sun: #FFD105;
+  --color-sun-foreground: #1c1917;
+
+  --color-sky: #46CEF5;
+  --color-sky-foreground: #082f49;
+
+  --color-bloom: #ED196A;
+  --color-bloom-foreground: #ffffff;
+
+  --color-ink: #110d1a;
+  --color-ink-foreground: #f8fafc;
+
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #64748b;
+  --color-border: #e2e8f0;
+}
+
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    border-color: var(--color-border, currentColor);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #ffffff;
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background-color: var(--color-sun);
+    color: var(--color-sun-foreground);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* Reusable brand utilities */
+@utility brand-text {
+  background: linear-gradient(100deg, #7033a8 0%, #ED196A 45%, #FFD105 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility ink-panel {
+  background: linear-gradient(160deg, #161026 0%, #201438 100%);
+  color: #f8fafc;
+}
+
+@utility surface-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+@utility eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}

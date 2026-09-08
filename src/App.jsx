@@ -1,30 +1,30 @@
 import { Nav, Footer } from "./components/Chrome";
-import { Quiz } from "./components/Quiz";
-import {
-  Hero,
-  HowItWorks,
-  WhatItIs,
-  Assessment,
-  Programmes,
-  Trust,
-  Proof,
-  FaqCta,
-} from "./components/Sections";
+import { LandingHero } from "./components/LandingHero";
+import { HowItWorksBanner } from "./components/HowItWorksBanner";
+import { InteractiveCheckIn } from "./components/InteractiveCheckIn";
+import { NoticeKnowDo } from "./components/NoticeKnowDo";
+import { HowOspiraCompares } from "./components/HowOspiraCompares";
+import { FullPictureAssessment } from "./components/FullPictureAssessment";
+import { WaysWeCanHelp } from "./components/WaysWeCanHelp";
+import { SimpleJourney } from "./components/SimpleJourney";
+import { WhyTrustUs } from "./components/WhyTrustUs";
+import { FaqSection } from "./components/FaqSection";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-white text-foreground">
       <Nav />
       <main>
-        <Hero />
-        <HowItWorks />
-        <Quiz />
-        <WhatItIs />
-        <Assessment />
-        <Programmes />
-        <Trust />
-        <Proof />
-        <FaqCta />
+        <LandingHero />
+        <HowItWorksBanner />
+        <InteractiveCheckIn />
+        <NoticeKnowDo />
+        <HowOspiraCompares />
+        <FullPictureAssessment />
+        <WaysWeCanHelp />
+        <SimpleJourney />
+        <WhyTrustUs />
+        <FaqSection />
       </main>
       <Footer />
     </div>
