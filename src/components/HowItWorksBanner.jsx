@@ -16,7 +16,10 @@ export function HowItWorksBanner({
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   return (
-    <section id="how-it-works" className="bg-white py-6 sm:py-10 lg:py-12">
+    <section
+      id="how-it-works"
+      className="relative bg-white py-12 sm:py-16 lg:py-20"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Main Card Container */}
         <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] bg-white border border-slate-100 shadow-[0_12px_44px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-[0_18px_54px_rgba(15,23,42,0.09)]">

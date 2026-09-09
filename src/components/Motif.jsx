@@ -91,14 +91,14 @@ export function Wordmark({ inverted = false, className = "" }) {
       <span className="leading-tight">
         <span
           className={`block font-display text-xl font-bold tracking-tight ${
-            inverted ? "text-white" : "text-slate-900"
+            inverted ? "text-white" : "text-[#23092F]"
           }`}
         >
           Ospira
         </span>
         <span
           className={`block text-[0.62rem] font-sans font-semibold tracking-[0.22em] uppercase ${
-            inverted ? "text-white/60" : "text-slate-500"
+            inverted ? "text-white/60" : "text-[#6B4F66]"
           }`}
         >
           Technologies

@@ -12,7 +12,7 @@ import { FaqSection } from "./components/FaqSection";
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-foreground">
+    <div className="min-h-screen bg-[#FFFBFF] text-foreground">
       <Nav />
       <main>
         <LandingHero />
