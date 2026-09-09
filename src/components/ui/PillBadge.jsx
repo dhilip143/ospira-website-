@@ -6,13 +6,13 @@ import React from "react";
 export function PillBadge({
   children,
   dot = true,
-  dotColor = "bg-[#7033a8]",
+  dotColor = "bg-[#4A1A6B]",
   className = "",
   ...props
 }) {
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-full border border-purple-200/80 bg-purple-50/70 px-3.5 py-1.5 text-xs sm:text-sm font-sans font-medium text-purple-950 shadow-xs backdrop-blur-xs ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full border border-[#EADBEE] bg-[#FAF7FC] px-3.5 py-1.5 text-xs sm:text-sm font-sans font-medium text-[#23092F] shadow-xs backdrop-blur-xs ${className}`}
       {...props}
     >
       {dot && (

@@ -20,8 +20,8 @@ const QUESTIONS = [
   {
     id: "behaviour",
     category: "Behaviour",
-    tagColor: "bg-[#7033a8]",
-    lightBadge: "bg-pink-50 text-pink-700 border-pink-100",
+    tagColor: "bg-[#4A1A6B]",
+    lightBadge: "bg-[#F5EDF8] text-[#4A1A6B] border-[#EADBEE]",
     question: "When your child hits a frustrating task, they usually...",
     options: [
       {
@@ -44,8 +44,8 @@ const QUESTIONS = [
   {
     id: "learning",
     category: "Learning",
-    tagColor: "bg-teal-700",
-    lightBadge: "bg-pink-50 text-pink-700 border-pink-100",
+    tagColor: "bg-[#3E6F5C]",
+    lightBadge: "bg-[#EDF5F1] text-[#3E6F5C] border-[#D2E4DC]",
     question: "How does your child best absorb new information?",
     options: [
       {
@@ -68,8 +68,8 @@ const QUESTIONS = [
   {
     id: "emotion",
     category: "Emotion",
-    tagColor: "bg-[#be185d]",
-    lightBadge: "bg-pink-50 text-pink-700 border-pink-100",
+    tagColor: "bg-[#C87E4F]",
+    lightBadge: "bg-[#FAF1EC] text-[#C87E4F] border-[#F2DDD2]",
     question: "When your child is upset, they typically...",
     options: [
       {
@@ -92,8 +92,8 @@ const QUESTIONS = [
   {
     id: "motivation",
     category: "Motivation",
-    tagColor: "bg-[#854d0e]",
-    lightBadge: "bg-pink-50 text-pink-700 border-pink-100",
+    tagColor: "bg-[#B87532]",
+    lightBadge: "bg-[#FDF4EB] text-[#B87532] border-[#F5DFCD]",
     question: "Your child is most energised by...",
     options: [
       {
@@ -116,8 +116,8 @@ const QUESTIONS = [
   {
     id: "relationships",
     category: "Relationships",
-    tagColor: "bg-[#7033a8]",
-    lightBadge: "bg-pink-50 text-pink-700 border-pink-100",
+    tagColor: "bg-[#4A1A6B]",
+    lightBadge: "bg-[#F5EDF8] text-[#4A1A6B] border-[#EADBEE]",
     question: "In a group, your child tends to...",
     options: [
       {
@@ -140,11 +140,11 @@ const QUESTIONS = [
 ];
 
 const CATEGORIES = [
-  { name: "Behaviour", color: "bg-[#7033a8]" },
-  { name: "Learning", color: "bg-teal-700" },
-  { name: "Emotion", color: "bg-[#be185d]" },
-  { name: "Motivation", color: "bg-[#854d0e]" },
-  { name: "Relationships", color: "bg-[#7033a8]" },
+  { name: "Behaviour", color: "bg-[#4A1A6B]" },
+  { name: "Learning", color: "bg-[#3E6F5C]" },
+  { name: "Emotion", color: "bg-[#C87E4F]" },
+  { name: "Motivation", color: "bg-[#B87532]" },
+  { name: "Relationships", color: "bg-[#4A1A6B]" },
 ];
 
 /**
@@ -190,13 +190,13 @@ export function InteractiveCheckIn() {
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-14">
           {/* ----------------- LEFT COLUMN: Messaging & Status ----------------- */}
           <div className="lg:col-span-5 max-w-xl">
-            {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-sky-200/80 bg-sky-50 px-3.5 py-1 text-xs font-sans font-semibold text-sky-800 shadow-xs">
+            {/* Top Pill Badge in Sage Green */}
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#3E6F5C]/30 bg-[#3E6F5C]/10 px-3.5 py-1 text-xs font-sans font-bold text-[#3E6F5C] shadow-xs">
               <span>{currentStep === 6 ? "Partial result" : "Free 2-minute check-in"}</span>
             </div>
 
-            {/* Dynamic Headline (Fraunces - Scaled to balanced size) */}
-            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[2.4rem] font-bold font-display text-slate-900 tracking-tight leading-[1.15]">
+            {/* Dynamic Headline (Fraunces Display in Deep Aubergine #23092F) */}
+            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-[2.4rem] font-bold font-display text-[#23092F] tracking-tight leading-[1.15]">
               {currentStep === 0 ? (
                 <>How well do you really know your child?</>
               ) : currentStep <= 5 ? (
@@ -206,8 +206,8 @@ export function InteractiveCheckIn() {
               )}
             </h2>
 
-            {/* Dynamic Subtitle (DM Sans) */}
-            <p className="mt-3 text-sm sm:text-base font-sans text-slate-500 leading-relaxed">
+            {/* Dynamic Subtitle (DM Sans in Mauve-Slate #6B4F66) */}
+            <p className="mt-3 text-sm sm:text-base font-sans text-[#6B4F66] leading-relaxed">
               {currentStep === 0 ? (
                 "5 quick questions. Instant partial result. Full profile free."
               ) : currentStep <= 5 ? (
@@ -218,23 +218,23 @@ export function InteractiveCheckIn() {
             </p>
 
             {/* Dynamic Checkmark List */}
-            <div className="mt-6 space-y-3 font-sans text-sm sm:text-base text-slate-700 font-medium">
+            <div className="mt-6 space-y-3 font-sans text-sm sm:text-base text-[#23092F] font-medium">
               {currentStep === 0 ? (
                 <>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>2 minutes</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>No sign-up needed</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>Instant result</span>
@@ -243,19 +243,19 @@ export function InteractiveCheckIn() {
               ) : currentStep <= 5 ? (
                 <>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>Q{currentStep} of 5</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>{currentQ?.category}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>2 minutes</span>
@@ -264,19 +264,19 @@ export function InteractiveCheckIn() {
               ) : (
                 <>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>Instant partial result</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>Full profile free</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#7033a8] text-white text-xs">
+                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#4A1A6B] text-white text-xs">
                       <Check className="h-3 w-3 stroke-[3]" />
                     </span>
                     <span>No spam, ever</span>
@@ -333,7 +333,7 @@ export function InteractiveCheckIn() {
               {currentStep >= 1 && (
                 <div className="relative h-1.5 w-full bg-slate-100">
                   <div
-                    className="h-full bg-[#7033a8] transition-all duration-300 ease-out"
+                    className="h-full bg-[#4A1A6B] transition-all duration-300 ease-out"
                     style={{
                       width: currentStep === 6 ? "100%" : `${(currentStep / 5) * 100}%`,
                     }}
@@ -353,47 +353,47 @@ export function InteractiveCheckIn() {
                       </div>
                     </div>
 
-                    <h3 className="mt-3 text-xl sm:text-2xl font-bold font-display text-slate-900 tracking-tight">
+                    <h3 className="mt-3 text-xl sm:text-2xl font-bold font-display text-[#23092F] tracking-tight">
                       5 questions about your child
                     </h3>
-                    <p className="mt-1 text-xs sm:text-sm font-sans text-slate-400">
+                    <p className="mt-1 text-xs sm:text-sm font-sans text-[#6B4F66]">
                       Behaviour · Learning · Emotion · Motivation · Relationships
                     </p>
 
                     {/* 6 Category Tiles Grid - Refined sizes */}
                     <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 text-center">
-                      <div className="flex flex-col items-center justify-center rounded-2xl bg-purple-50/70 border border-purple-100/60 p-3 sm:p-3.5 text-purple-950 transition-all hover:bg-purple-100/70">
+                      <div className="flex flex-col items-center justify-center rounded-2xl bg-[#F5EDF8] border border-[#EADBEE] p-3 sm:p-3.5 text-[#23092F] transition-all hover:bg-[#EFE2F3]">
                         <Zap className="h-4.5 w-4.5 text-amber-500 fill-amber-400" />
                         <span className="mt-1.5 text-xs sm:text-sm font-sans font-semibold">
                           Behaviour
                         </span>
                       </div>
-                      <div className="flex flex-col items-center justify-center rounded-2xl bg-sky-50/70 border border-sky-100/60 p-3 sm:p-3.5 text-sky-950 transition-all hover:bg-sky-100/70">
+                      <div className="flex flex-col items-center justify-center rounded-2xl bg-[#EDF5F1] border border-[#D2E4DC] p-3 sm:p-3.5 text-[#23092F] transition-all hover:bg-[#E1EDE7]">
                         <Lightbulb className="h-4.5 w-4.5 text-amber-400 fill-amber-300" />
                         <span className="mt-1.5 text-xs sm:text-sm font-sans font-semibold">
                           Learning
                         </span>
                       </div>
-                      <div className="flex flex-col items-center justify-center rounded-2xl bg-pink-50/70 border border-pink-100/60 p-3 sm:p-3.5 text-pink-950 transition-all hover:bg-pink-100/70">
-                        <Heart className="h-4.5 w-4.5 text-[#ED196A] fill-[#ED196A]" />
+                      <div className="flex flex-col items-center justify-center rounded-2xl bg-[#FAF1EC] border border-[#F2DDD2] p-3 sm:p-3.5 text-[#23092F] transition-all hover:bg-[#F3E5DD]">
+                        <Heart className="h-4.5 w-4.5 text-[#C87E4F] fill-[#C87E4F]" />
                         <span className="mt-1.5 text-xs sm:text-sm font-sans font-semibold">
                           Emotion
                         </span>
                       </div>
-                      <div className="flex flex-col items-center justify-center rounded-2xl bg-amber-50/70 border border-amber-100/60 p-3 sm:p-3.5 text-amber-950 transition-all hover:bg-amber-100/70">
+                      <div className="flex flex-col items-center justify-center rounded-2xl bg-[#FDF4EB] border border-[#F5DFCD] p-3 sm:p-3.5 text-[#23092F] transition-all hover:bg-[#F7E7D5]">
                         <Rocket className="h-4.5 w-4.5 text-rose-500 fill-rose-400" />
                         <span className="mt-1.5 text-xs sm:text-sm font-sans font-semibold">
                           Motivation
                         </span>
                       </div>
-                      <div className="flex flex-col items-center justify-center rounded-2xl bg-indigo-50/60 border border-indigo-100/60 p-3 sm:p-3.5 text-indigo-950 transition-all hover:bg-indigo-100/70">
-                        <Users className="h-4.5 w-4.5 text-indigo-600 fill-indigo-400" />
+                      <div className="flex flex-col items-center justify-center rounded-2xl bg-[#F5EDF8] border border-[#EADBEE] p-3 sm:p-3.5 text-[#23092F] transition-all hover:bg-[#EFE2F3]">
+                        <Users className="h-4.5 w-4.5 text-[#4A1A6B] fill-[#4A1A6B]" />
                         <span className="mt-1.5 text-xs sm:text-sm font-sans font-semibold">
                           Relationships
                         </span>
                       </div>
-                      <div className="flex flex-col items-center justify-center rounded-2xl bg-emerald-50/60 border border-emerald-100/60 p-3 sm:p-3.5 text-emerald-950 transition-all hover:bg-emerald-100/70">
-                        <Sprout className="h-4.5 w-4.5 text-emerald-600" />
+                      <div className="flex flex-col items-center justify-center rounded-2xl bg-[#EDF5F1] border border-[#D2E4DC] p-3 sm:p-3.5 text-[#23092F] transition-all hover:bg-[#E1EDE7]">
+                        <Sprout className="h-4.5 w-4.5 text-[#3E6F5C]" />
                         <span className="mt-1.5 text-xs sm:text-sm font-sans font-semibold">
                           Readiness
                         </span>
@@ -405,13 +405,13 @@ export function InteractiveCheckIn() {
                       <button
                         type="button"
                         onClick={() => setCurrentStep(1)}
-                        className="w-full rounded-xl bg-[#7033a8] hover:bg-[#581c87] py-3 sm:py-3.5 text-sm sm:text-base font-sans font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer active:scale-[0.99]"
+                        className="w-full rounded-xl bg-[#4A1A6B] hover:bg-[#381254] py-3 sm:py-3.5 text-sm sm:text-base font-sans font-semibold text-white shadow-[0_8px_20px_-6px_rgba(74,26,107,0.45)] hover:shadow-lg transition-all duration-200 cursor-pointer active:scale-[0.99]"
                       >
                         Start the check-in →
                       </button>
                     </div>
 
-                    <p className="mt-3 text-xs font-sans text-slate-400">
+                    <p className="mt-3 text-xs font-sans text-[#6B4F66]">
                       Free · No account needed · 2 minutes
                     </p>
                   </div>
@@ -428,9 +428,9 @@ export function InteractiveCheckIn() {
                           onClick={() => setCurrentStep(s)}
                           className={`cursor-pointer transition-all duration-300 ${
                             s === currentStep
-                              ? "h-2 w-6 rounded-full bg-[#7033a8]"
+                              ? "h-2 w-6 rounded-full bg-[#4A1A6B]"
                               : answers[QUESTIONS[s - 1].id]
-                              ? "h-2 w-2 rounded-full bg-purple-300"
+                              ? "h-2 w-2 rounded-full bg-[#B398C0]"
                               : "h-2 w-2 rounded-full bg-slate-200"
                           }`}
                           title={`Go to question ${s}`}
@@ -440,16 +440,16 @@ export function InteractiveCheckIn() {
 
                     {/* Category Tag & Step Indicator */}
                     <div className="flex items-center justify-between">
-                      <span className="inline-block rounded-full bg-pink-50 px-3 py-1 text-xs font-sans font-semibold text-pink-700 border border-pink-100/70">
+                      <span className="inline-block rounded-full bg-[#F5EDF8] px-3 py-1 text-xs font-sans font-semibold text-[#4A1A6B] border border-[#EADBEE]">
                         {currentQ.category}
                       </span>
-                      <span className="text-xs sm:text-sm font-sans font-medium text-slate-400">
+                      <span className="text-xs sm:text-sm font-sans font-medium text-[#6B4F66]">
                         {currentStep} / 5
                       </span>
                     </div>
 
                     {/* Question Title (Fraunces - Refined balanced size) */}
-                    <h3 className="mt-3.5 text-lg sm:text-xl lg:text-[1.35rem] font-bold font-display text-slate-900 tracking-tight leading-snug">
+                    <h3 className="mt-3.5 text-lg sm:text-xl lg:text-[1.35rem] font-bold font-display text-[#23092F] tracking-tight leading-snug">
                       {currentQ.question}
                     </h3>
 
@@ -464,23 +464,23 @@ export function InteractiveCheckIn() {
                             onClick={() => handleSelectOption(opt.key)}
                             className={`group flex items-center gap-3 sm:gap-3.5 rounded-xl sm:rounded-2xl p-3 sm:p-3.5 border transition-all duration-200 cursor-pointer select-none ${
                               isSelected
-                                ? "border-[#7033a8] bg-purple-50/40 shadow-xs"
-                                : "border-slate-200/90 bg-white hover:border-[#7033a8]/50 hover:bg-slate-50/60"
+                                ? "border-[#4A1A6B] bg-[#FAF7FC] shadow-xs"
+                                : "border-[#ECE2E6] bg-white hover:border-[#4A1A6B]/50 hover:bg-[#FAF7FC]/60"
                             }`}
                           >
                             {/* Letter Circle / Check Indicator */}
                             <div
                               className={`flex h-7 w-7 sm:h-7.5 sm:w-7.5 shrink-0 items-center justify-center rounded-full border text-xs sm:text-sm font-sans font-semibold transition-colors ${
                                 isSelected
-                                  ? "border-[#7033a8] bg-[#7033a8] text-white"
-                                  : "border-slate-300 bg-white text-slate-500 group-hover:border-[#7033a8]/50"
+                                  ? "border-[#4A1A6B] bg-[#4A1A6B] text-white"
+                                  : "border-slate-300 bg-white text-[#6B4F66] group-hover:border-[#4A1A6B]/50"
                               }`}
                             >
                               {isSelected ? <Check className="h-3.5 w-3.5 stroke-[2.5]" /> : opt.key}
                             </div>
 
                             {/* Option Text */}
-                            <span className="font-sans text-xs sm:text-sm font-medium text-slate-800 leading-snug">
+                            <span className="font-sans text-xs sm:text-sm font-medium text-[#23092F] leading-snug">
                               {opt.text}
                             </span>
                           </div>
@@ -493,7 +493,7 @@ export function InteractiveCheckIn() {
                       <button
                         type="button"
                         onClick={() => setCurrentStep((prev) => Math.max(0, prev - 1))}
-                        className="text-xs sm:text-sm font-sans font-medium text-slate-400 hover:text-slate-700 cursor-pointer"
+                        className="text-xs sm:text-sm font-sans font-medium text-[#6B4F66] hover:text-[#23092F] cursor-pointer"
                       >
                         ← {currentStep === 1 ? "Overview" : "Previous"}
                       </button>
@@ -502,7 +502,7 @@ export function InteractiveCheckIn() {
                         <button
                           type="button"
                           onClick={() => setCurrentStep((prev) => prev + 1)}
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-sans font-semibold text-[#7033a8] hover:text-[#581c87] cursor-pointer"
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-sans font-semibold text-[#4A1A6B] hover:text-[#381254] cursor-pointer"
                         >
                           Next question <ArrowRight className="h-3.5 w-3.5" />
                         </button>
@@ -521,14 +521,14 @@ export function InteractiveCheckIn() {
                     </div>
 
                     {/* Box 1: STRENGTH SPOTTED */}
-                    <div className="relative overflow-hidden rounded-2xl bg-sky-50/70 border border-sky-100 p-4 sm:p-5 mt-5">
-                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-sky-500 rounded-l-2xl" />
-                      <p className="text-[0.72rem] font-sans font-bold tracking-[0.14em] text-sky-800 uppercase">
+                    <div className="relative overflow-hidden rounded-2xl bg-[#EDF5F1] border border-[#D2E4DC] p-4 sm:p-5 mt-5">
+                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#3E6F5C] rounded-l-2xl" />
+                      <p className="text-[0.72rem] font-sans font-bold tracking-[0.14em] text-[#3E6F5C] uppercase">
                         STRENGTH SPOTTED
                       </p>
-                      <p className="mt-1.5 text-sm sm:text-base font-sans text-slate-800 leading-relaxed">
+                      <p className="mt-1.5 text-sm sm:text-base font-sans text-[#23092F] leading-relaxed">
                         Your child shows strong{" "}
-                        <strong className="font-bold text-slate-900">
+                        <strong className="font-bold text-[#23092F]">
                           persistence under pressure
                         </strong>{" "}
                         — a real developmental asset.
@@ -536,21 +536,21 @@ export function InteractiveCheckIn() {
                     </div>
 
                     {/* Box 2: OPEN QUESTION */}
-                    <div className="relative overflow-hidden rounded-2xl bg-amber-50/70 border border-amber-100 p-4 sm:p-5 mt-4">
-                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-amber-400 rounded-l-2xl" />
-                      <p className="text-[0.72rem] font-sans font-bold tracking-[0.14em] text-amber-800 uppercase">
+                    <div className="relative overflow-hidden rounded-2xl bg-[#FAF1EC] border border-[#F2DDD2] p-4 sm:p-5 mt-4">
+                      <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#C87E4F] rounded-l-2xl" />
+                      <p className="text-[0.72rem] font-sans font-bold tracking-[0.14em] text-[#C87E4F] uppercase">
                         OPEN QUESTION
                       </p>
-                      <p className="mt-1.5 text-sm sm:text-base font-sans text-slate-800 leading-relaxed">
+                      <p className="mt-1.5 text-sm sm:text-base font-sans text-[#23092F] leading-relaxed">
                         Are the environments around them matching how they're motivated?
                       </p>
                     </div>
 
                     {/* Sub-strip Banner */}
-                    <div className="rounded-xl bg-purple-50/70 border border-purple-100/60 py-3.5 px-4 text-center mt-5">
-                      <p className="text-xs sm:text-sm font-sans text-slate-600">
+                    <div className="rounded-xl bg-[#F5EDF8] border border-[#EADBEE] py-3.5 px-4 text-center mt-5">
+                      <p className="text-xs sm:text-sm font-sans text-[#6B4F66]">
                         Full profile covers all 6 dimensions.{" "}
-                        <strong className="font-bold text-slate-900">It's free.</strong>
+                        <strong className="font-bold text-[#23092F]">It's free.</strong>
                       </p>
                     </div>
 
@@ -558,7 +558,7 @@ export function InteractiveCheckIn() {
                     <div className="mt-4">
                       <a
                         href="#final-cta"
-                        className="block w-full rounded-xl bg-[#7033a8] hover:bg-[#581c87] py-3.5 sm:py-4 text-center text-sm sm:text-base font-sans font-semibold text-white shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer active:scale-[0.99]"
+                        className="block w-full rounded-xl bg-[#4A1A6B] hover:bg-[#381254] py-3.5 sm:py-4 text-center text-sm sm:text-base font-sans font-semibold text-white shadow-[0_8px_20px_-6px_rgba(74,26,107,0.45)] hover:shadow-lg transition-all duration-200 cursor-pointer active:scale-[0.99]"
                       >
                         Unlock the full profile →
                       </a>
@@ -569,7 +569,7 @@ export function InteractiveCheckIn() {
                       <button
                         type="button"
                         onClick={handleReset}
-                        className="inline-flex items-center gap-1.5 text-xs font-sans font-medium text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
+                        className="inline-flex items-center gap-1.5 text-xs font-sans font-medium text-[#6B4F66] hover:text-[#23092F] transition-colors cursor-pointer"
                       >
                         <RotateCcw className="h-3 w-3" />
                         <span>Retake check-in</span>

@@ -6,9 +6,18 @@
   --font-sans: 'DM Sans', sans-serif;
   --font-logo: 'Century Gothic', 'Questrial', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  --color-primary: #7033a8;
-  --color-primary-hover: #581c87;
+  --color-primary: #4A1A6B;
+  --color-primary-hover: #381254;
   --color-primary-foreground: #ffffff;
+
+  --color-ink: #23092F;
+  --color-ink-foreground: #ffffff;
+
+  --color-sage: #3E6F5C;
+  --color-sage-foreground: #ffffff;
+
+  --color-terracotta: #C87E4F;
+  --color-terracotta-foreground: #ffffff;
 
   --color-sun: #FFD105;
   --color-sun-foreground: #1c1917;
@@ -19,16 +28,13 @@
   --color-bloom: #ED196A;
   --color-bloom-foreground: #ffffff;
 
-  --color-ink: #110d1a;
-  --color-ink-foreground: #f8fafc;
-
   --color-background: #ffffff;
-  --color-foreground: #0f172a;
+  --color-foreground: #23092F;
   --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
-  --color-muted: #f8fafc;
-  --color-muted-foreground: #64748b;
-  --color-border: #e2e8f0;
+  --color-card-foreground: #23092F;
+  --color-muted: #FAF7FC;
+  --color-muted-foreground: #6B4F66;
+  --color-border: #ECE2E6;
 }
 
 @layer base {
@@ -39,19 +45,20 @@
   body {
     font-family: var(--font-sans);
     background-color: #ffffff;
-    color: var(--color-foreground);
+    color: var(--color-muted-foreground);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    color: var(--color-ink);
     letter-spacing: -0.015em;
   }
 
   ::selection {
-    background-color: var(--color-sun);
-    color: var(--color-sun-foreground);
+    background-color: var(--color-primary);
+    color: #ffffff;
   }
 }
 
@@ -69,22 +76,22 @@
 
 /* Reusable brand utilities */
 @utility brand-text {
-  background: linear-gradient(100deg, #7033a8 0%, #ED196A 45%, #FFD105 100%);
+  background: linear-gradient(100deg, #4A1A6B 0%, #C87E4F 55%, #3E6F5C 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 @utility ink-panel {
-  background: linear-gradient(160deg, #161026 0%, #201438 100%);
-  color: #f8fafc;
+  background: linear-gradient(160deg, #160822 0%, #23092F 100%);
+  color: #FAF7FC;
 }
 
 @utility surface-card {
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #ECE2E6;
   border-radius: 1rem;
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 20px -2px rgba(35, 9, 47, 0.05);
 }
 
 @utility eyebrow {

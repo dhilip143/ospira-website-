@@ -180,7 +180,7 @@ export function Footer() {
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-xs">
             <Wordmark inverted={true} />
-            <p className="mt-4 text-sm text-ink-foreground/75 leading-relaxed">
+            <p className="mt-4 text-sm text-[#EADBEE]/75 leading-relaxed">
               Ospira Technologies Pvt Ltd — parenting coaching built on assessment, not advice.
             </p>
           </div>
@@ -193,7 +193,7 @@ export function Footer() {
             <FooterCol title="Legal" links={["Privacy", "Data handling", "Terms"]} />
           </div>
         </div>
-        <div className="mt-12 flex flex-col gap-2 border-t border-ink-foreground/15 pt-6 text-xs text-ink-foreground/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/[0.08] pt-6 text-xs text-[#EADBEE]/60 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} Ospira Technologies Pvt Ltd. All rights reserved.</span>
           <span>Made for parents who want to know, not guess.</span>
         </div>
@@ -205,13 +205,13 @@ export function Footer() {
 function FooterCol({ title, links }) {
   return (
     <div>
-      <p className="eyebrow text-sun">{title}</p>
+      <p className="font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-[#D9A07E]">{title}</p>
       <ul className="mt-4 space-y-2.5">
         {links.map((l) => (
           <li key={l}>
             <a
               href="#top"
-              className="text-ink-foreground/75 transition-colors hover:text-white"
+              className="text-[#EADBEE]/75 transition-colors hover:text-white"
             >
               {l}
             </a>

@@ -7,21 +7,21 @@ const STEPS = [
       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
         <path
           d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-          fill="#F8FAFC"
-          stroke="#94A3B8"
+          fill="#FAF7FC"
+          stroke="#C2B5C6"
           strokeWidth="1.5"
         />
         <polyline
           points="14 2 14 8 20 8"
-          fill="#E2E8F0"
-          stroke="#94A3B8"
+          fill="#ECE2E6"
+          stroke="#C2B5C6"
           strokeWidth="1.5"
         />
         <path
           d="M9 13.5l4.5-4.5 1.5 1.5-4.5 4.5-2 .5.5-2z"
-          fill="#FB923C"
-          stroke="#EA580C"
-          strokeWidth="1"
+          fill="#FAF1EC"
+          stroke="#C87E4F"
+          strokeWidth="1.2"
           strokeLinejoin="round"
         />
       </svg>
@@ -39,13 +39,13 @@ const STEPS = [
           width="16"
           height="18"
           rx="2"
-          fill="#F8FAFC"
-          stroke="#94A3B8"
+          fill="#FAF7FC"
+          stroke="#C2B5C6"
           strokeWidth="1.5"
         />
-        <rect x="7" y="12" width="2.5" height="6" rx="0.5" fill="#46CEF5" />
-        <rect x="10.75" y="8" width="2.5" height="10" rx="0.5" fill="#ED196A" />
-        <rect x="14.5" y="10.5" width="2.5" height="7.5" rx="0.5" fill="#783FAA" />
+        <rect x="7" y="12" width="2.5" height="6" rx="0.5" fill="#3E6F5C" />
+        <rect x="10.75" y="8" width="2.5" height="10" rx="0.5" fill="#4A1A6B" />
+        <rect x="14.5" y="10.5" width="2.5" height="7.5" rx="0.5" fill="#C87E4F" />
       </svg>
     ),
   },
@@ -55,11 +55,11 @@ const STEPS = [
     description: "Walk through findings, agree focus areas.",
     icon: (
       <svg
-        className="w-5 h-5 text-slate-700"
+        className="w-5 h-5 text-[#4A1A6B]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.7"
+        strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -76,11 +76,11 @@ const STEPS = [
     description: "Month-by-month plan with check-ins built in.",
     icon: (
       <svg
-        className="w-5 h-5 text-slate-700"
+        className="w-5 h-5 text-[#3E6F5C]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth="1.7"
+        strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -104,10 +104,10 @@ export function SimpleJourney() {
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#110D1A] leading-tight tracking-tight">
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#23092F] leading-tight tracking-tight">
             Here is how simple the journey is.
           </h2>
-          <p className="font-sans text-xs sm:text-[13px] text-slate-400 font-normal mt-2">
+          <p className="font-sans text-xs sm:text-[13px] text-[#6B4F66] font-normal mt-2">
             4 steps. Realistic time commitments.
           </p>
         </div>
@@ -115,12 +115,12 @@ export function SimpleJourney() {
         {/* 4 Step Timeline */}
         <div className="relative">
           
-          {/* Connecting Rainbow Brand Gradient Line (Desktop & Tablet) */}
+          {/* Connecting Harmonic Brand Gradient Line (Desktop & Tablet) */}
           <div
             className="absolute top-6 sm:top-7 left-[12%] right-[12%] h-[2px] -translate-y-1/2 hidden md:block"
             style={{
               background:
-                "linear-gradient(90deg, #783FAA 0%, #46CEF5 35%, #ED196A 68%, #FFD105 100%)",
+                "linear-gradient(90deg, #4A1A6B 0%, #3E6F5C 38%, #C87E4F 72%, #4A1A6B 100%)",
             }}
           />
 
@@ -130,22 +130,22 @@ export function SimpleJourney() {
               <div key={step.title} className="flex flex-col items-center text-center">
                 
                 {/* Icon Box (Squircle) */}
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center justify-center relative z-10 transition-transform duration-200 hover:scale-105">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white border border-[#ECE2E6] shadow-xs flex items-center justify-center relative z-10 transition-transform duration-200 hover:scale-105">
                   {step.icon}
                 </div>
 
                 {/* Time Tag */}
-                <span className="font-sans font-bold text-[10px] sm:text-[11px] tracking-wider uppercase text-[#7033a8] mt-3.5 sm:mt-4 mb-1 block">
+                <span className="font-sans font-bold text-[10px] sm:text-[11px] tracking-wider uppercase text-[#4A1A6B] mt-3.5 sm:mt-4 mb-1 block">
                   {step.time}
                 </span>
 
                 {/* Step Title in Fraunces */}
-                <h3 className="font-display text-sm sm:text-base font-bold text-[#110D1A] leading-snug mb-1">
+                <h3 className="font-display text-sm sm:text-base font-bold text-[#23092F] leading-snug mb-1">
                   {step.title}
                 </h3>
 
                 {/* Step Description in DM Sans */}
-                <p className="font-sans text-xs text-slate-400 font-normal leading-relaxed max-w-[200px]">
+                <p className="font-sans text-xs text-[#6B4F66] font-normal leading-relaxed max-w-[200px]">
                   {step.description}
                 </p>
 

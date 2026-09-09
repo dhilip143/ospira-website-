@@ -25,11 +25,11 @@ export function HowItWorksBanner({
         <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] bg-white border border-slate-100 shadow-[0_12px_44px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-[0_18px_54px_rgba(15,23,42,0.09)]">
           {/* Subtle concentric circles watermark on far right background */}
           <div
-            className="pointer-events-none absolute -right-16 sm:-right-10 top-1/2 -translate-y-1/2 select-none opacity-[0.045]"
+            className="pointer-events-none absolute -right-16 sm:-right-10 top-1/2 -translate-y-1/2 select-none opacity-[0.04]"
             aria-hidden="true"
           >
             <svg
-              className="h-64 w-64 sm:h-80 sm:w-80 text-[#7033a8]"
+              className="h-64 w-64 sm:h-80 sm:w-80 text-[#4A1A6B]"
               viewBox="0 0 200 200"
               fill="none"
               stroke="currentColor"
@@ -54,27 +54,28 @@ export function HowItWorksBanner({
               <button
                 type="button"
                 onClick={() => setIsVideoOpen(true)}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:translate-x-0 md:-right-6 z-20 flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgba(0,0,0,0.18)] border border-slate-100/90 transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_30px_rgba(112,51,168,0.3)] active:scale-95 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7033a8]"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:translate-x-0 md:-right-6 z-20 flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgba(35,9,47,0.18)] border border-[#ECE2E6] transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_30px_rgba(74,26,107,0.3)] active:scale-95 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A1A6B]"
                 aria-label="Play Sixty Seconds Overview Video"
               >
-                <Play className="h-5 w-5 sm:h-6 sm:w-6 fill-[#7033a8] text-[#7033a8] ml-0.5 transition-transform duration-200 group-hover:scale-105" />
+                <Play className="h-5 w-5 sm:h-6 sm:w-6 fill-[#4A1A6B] text-[#4A1A6B] ml-0.5 transition-transform duration-200 group-hover:scale-105" />
               </button>
             </div>
 
             {/* Right Column: Text Content */}
             <div className="relative z-10 md:col-span-7 lg:col-span-8 p-6 sm:p-8 md:pl-10 lg:pl-12 lg:pr-14">
-              {/* Eyebrow */}
-              <p className="text-[0.72rem] sm:text-xs font-sans font-bold tracking-[0.18em] text-[#7033a8] uppercase">
-                See How Ospira Works
-              </p>
+              {/* Eyebrow in Sage Green */}
+              <div className="flex items-center gap-2 text-[0.72rem] sm:text-xs font-sans font-extrabold tracking-[0.18em] text-[#3E6F5C] uppercase">
+                <span className="w-5 h-0.5 bg-[#3E6F5C]" aria-hidden="true" />
+                <span>See How Ospira Works</span>
+              </div>
 
-              {/* Heading (Fraunces Display Serif) */}
-              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-[2.2rem] font-bold font-display text-slate-900 tracking-tight leading-[1.18]">
+              {/* Heading (Fraunces Display Serif in Deep Aubergine #23092F) */}
+              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-[2.2rem] font-bold font-display text-[#23092F] tracking-tight leading-[1.18]">
                 Sixty seconds. The full picture.
               </h2>
 
-              {/* Subheading (DM Sans) */}
-              <p className="mt-2.5 sm:mt-3 text-sm sm:text-base font-sans text-slate-500 leading-relaxed max-w-lg">
+              {/* Subheading (DM Sans in Mauve-Slate #6B4F66) */}
+              <p className="mt-2.5 sm:mt-3 text-sm sm:text-base font-sans text-[#6B4F66] leading-relaxed max-w-lg">
                 A quick walk through the Ospira journey, from your first check-in
                 to your child's plan.
               </p>
@@ -84,7 +85,7 @@ export function HowItWorksBanner({
                 <button
                   type="button"
                   onClick={() => setIsVideoOpen(true)}
-                  className="inline-flex items-center gap-1.5 text-sm sm:text-base font-sans font-semibold text-[#7033a8] hover:text-[#581c87] transition-all group cursor-pointer focus:outline-none"
+                  className="inline-flex items-center gap-1.5 text-sm sm:text-base font-sans font-semibold text-[#4A1A6B] hover:text-[#381254] transition-all group cursor-pointer focus:outline-none"
                 >
                   <span>Watch Video</span>
                   <span

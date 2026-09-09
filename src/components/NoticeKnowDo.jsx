@@ -68,10 +68,10 @@ const STEPS = [
     number: "01",
     title: "Assess",
     description: "See the patterns beneath everyday moments.",
-    iconBg: "bg-[#F0EAFA]",
+    iconBg: "bg-[#F5EDF8]",
     icon: (
       <svg
-        className="w-3.5 h-3.5 text-[#7033a8]"
+        className="w-3.5 h-3.5 text-[#4A1A6B]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -88,10 +88,10 @@ const STEPS = [
     number: "02",
     title: "Understand",
     description: "Turn observations into a fuller view.",
-    iconBg: "bg-[#E0F6FA]",
+    iconBg: "bg-[#E8F3EE]",
     icon: (
       <svg
-        className="w-3.5 h-3.5 text-[#0891b2]"
+        className="w-3.5 h-3.5 text-[#3E6F5C]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -109,10 +109,10 @@ const STEPS = [
     number: "03",
     title: "Act",
     description: "Move forward with relevant next steps.",
-    iconBg: "bg-[#FDE7F0]",
+    iconBg: "bg-[#FAF1EC]",
     icon: (
       <svg
-        className="w-3.5 h-3.5 text-[#ED196A]"
+        className="w-3.5 h-3.5 text-[#C87E4F]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -136,23 +136,24 @@ export function NoticeKnowDo() {
   return (
     <section
       id="lens"
-      className="relative w-full bg-[#FAF8FD] py-10 sm:py-14 lg:py-16 overflow-hidden transition-colors"
+      className="relative w-full bg-[#FAF7FC] py-10 sm:py-14 lg:py-16 overflow-hidden transition-colors"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Heading & 3 Steps */}
           <div className="lg:col-span-5 max-w-lg">
-            {/* Eyebrow */}
-            <p className="font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-[#7033a8] mb-3 sm:mb-4">
-              NOT ADVICE. A CLEARER LENS.
+            {/* Eyebrow with leading dash */}
+            <p className="font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-[#3E6F5C] mb-3 sm:mb-4 flex items-center gap-2">
+              <span className="inline-block w-4 h-[1.5px] bg-[#3E6F5C]" />
+              <span>NOT ADVICE. A CLEARER LENS.</span>
             </p>
 
-            {/* Fraunces Headline: Notice more. Know more. Do more. (Scaled to balanced proportion) */}
+            {/* Fraunces Headline: Notice more. Know more. Do more. */}
             <h2 className="font-display text-2xl sm:text-3xl lg:text-[38px] font-bold leading-[1.1] tracking-tight mb-5 sm:mb-7">
-              <span className="block text-[#110D1A]">Notice more.</span>
-              <span className="block text-[#7033a8]">Know more.</span>
-              <span className="block text-[#110D1A]">Do more.</span>
+              <span className="block text-[#23092F]">Notice more.</span>
+              <span className="block text-[#4A1A6B]">Know more.</span>
+              <span className="block text-[#23092F]">Do more.</span>
             </h2>
 
             {/* 3 Step Process List with Dividers */}
@@ -175,14 +176,14 @@ export function NoticeKnowDo() {
                       {/* Step Content */}
                       <div className="pt-0.5 flex-1">
                         <div className="flex items-baseline gap-2">
-                          <span className="font-sans text-xs font-normal text-slate-400">
+                          <span className="font-sans text-xs font-semibold text-[#6B4F66]/70">
                             {step.number}
                           </span>
-                          <span className="font-display text-base sm:text-lg font-bold text-[#110D1A]">
+                          <span className="font-display text-base sm:text-lg font-bold text-[#23092F]">
                             {step.title}
                           </span>
                         </div>
-                        <p className="font-sans text-xs sm:text-[13px] text-slate-500 font-normal mt-0.5 leading-relaxed">
+                        <p className="font-sans text-xs sm:text-[13px] text-[#6B4F66] font-normal mt-0.5 leading-relaxed">
                           {step.description}
                         </p>
                       </div>
@@ -190,10 +191,10 @@ export function NoticeKnowDo() {
 
                     {/* Horizontal Divider Lines */}
                     {idx === 0 && (
-                      <div className="w-full h-[1px] bg-slate-200/90" />
+                      <div className="w-full h-[1px] bg-[#ECE2E6]" />
                     )}
                     {idx === 1 && (
-                      <div className="w-full h-[1.5px] bg-[#110D1A]" />
+                      <div className="w-full h-[1.5px] bg-[#23092F]" />
                     )}
                   </div>
                 );
@@ -201,9 +202,9 @@ export function NoticeKnowDo() {
             </div>
           </div>
 
-          {/* Right Column: Compact, Scaled-down Dark Card */}
+          {/* Right Column: Scaled Dark Card in Deep Aubergine */}
           <div className="lg:col-span-7 w-full flex justify-center lg:justify-end">
-            <div className="w-full max-w-[580px] bg-[#121026] text-white rounded-[24px] sm:rounded-[28px] p-5 sm:p-7 lg:p-8 shadow-xl shadow-purple-950/20 border border-white/[0.04]">
+            <div className="w-full max-w-[580px] bg-[#160822] text-white rounded-[24px] sm:rounded-[28px] p-5 sm:p-7 lg:p-8 shadow-xl shadow-[#23092F]/30 border border-white/[0.08]">
               
               {/* Top Navigation Tabs */}
               <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1">
@@ -216,8 +217,8 @@ export function NoticeKnowDo() {
                       onClick={() => setActiveTab(idx)}
                       className={`whitespace-nowrap px-3.5 py-1 text-xs font-medium rounded-full transition-all duration-200 cursor-pointer ${
                         isActive
-                          ? "border border-purple-400/50 bg-[#1E1738] text-purple-200 shadow-xs"
-                          : "text-slate-400 hover:text-white"
+                          ? "border border-[#4A1A6B] bg-[#2E1242] text-[#F5EDF8] shadow-xs"
+                          : "text-white/60 hover:text-white"
                       }`}
                     >
                       {tab.label}
@@ -228,19 +229,19 @@ export function NoticeKnowDo() {
 
               {/* Category Eyebrow in Card */}
               <div className="mt-5 sm:mt-6">
-                <span className="font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-purple-400">
+                <span className="font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#8FB8A6]">
                   {currentTab.eyebrow}
                 </span>
 
-                {/* Main Tab Headline in Fraunces (Compact, balanced text size) */}
+                {/* Main Tab Headline in Fraunces */}
                 <h3 className="font-display text-base sm:text-lg lg:text-[20px] font-semibold text-white leading-snug mt-2">
                   {currentTab.headline}
                 </h3>
               </div>
 
-              {/* Sub-panel: WHAT OSPIRA MAPS (Compact padding & height) */}
-              <div className="mt-5 sm:mt-6 rounded-xl sm:rounded-2xl bg-[#1C1A36]/90 border border-white/[0.06] p-4 sm:p-5">
-                <span className="block font-sans text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400/85 mb-2.5">
+              {/* Sub-panel: WHAT OSPIRA MAPS */}
+              <div className="mt-5 sm:mt-6 rounded-xl sm:rounded-2xl bg-[#251036]/90 border border-white/[0.08] p-4 sm:p-5">
+                <span className="block font-sans text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-white/60 mb-2.5">
                   WHAT OSPIRA MAPS
                 </span>
 
@@ -249,7 +250,7 @@ export function NoticeKnowDo() {
                   {currentTab.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="whitespace-nowrap inline-flex items-center rounded-full bg-[#28244B] border border-white/[0.08] px-3 py-1 font-sans text-[11px] sm:text-xs text-slate-200 font-medium shadow-2xs"
+                      className="whitespace-nowrap inline-flex items-center rounded-full bg-[#36174D] border border-white/[0.08] px-3 py-1 font-sans text-[11px] sm:text-xs text-[#F5EDF8] font-medium shadow-2xs"
                     >
                       {tag}
                     </span>
@@ -257,14 +258,14 @@ export function NoticeKnowDo() {
                 </div>
 
                 {/* Sample Recommendation */}
-                <div className="mt-4 pt-3.5 border-t border-white/[0.06]">
-                  <div className="flex items-center gap-1.5 text-slate-400">
-                    <span className="text-purple-400 text-xs select-none">"</span>
-                    <span className="font-sans text-[11px] sm:text-xs font-medium tracking-wide">
+                <div className="mt-4 pt-3.5 border-t border-white/[0.08]">
+                  <div className="flex items-center gap-1.5 text-white/70">
+                    <span className="text-[#C87E4F] text-xs select-none">"</span>
+                    <span className="font-sans text-[11px] sm:text-xs font-medium tracking-wide text-[#D9A07E]">
                       {currentTab.sampleLabel}
                     </span>
                   </div>
-                  <p className="font-sans text-xs sm:text-[13px] text-slate-300 font-normal italic mt-1 leading-relaxed">
+                  <p className="font-sans text-xs sm:text-[13px] text-white/85 font-normal italic mt-1 leading-relaxed">
                     {currentTab.recommendation}
                   </p>
                 </div>

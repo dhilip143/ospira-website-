@@ -49,7 +49,7 @@ export function FaqSection() {
         
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-10">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#110D1A] tracking-tight leading-tight">
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#23092F] tracking-tight leading-tight">
             Frequently asked questions.
           </h2>
         </div>
@@ -59,7 +59,7 @@ export function FaqSection() {
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div key={item.question} className="border-b border-slate-200/80">
+              <div key={item.question} className="border-b border-[#ECE2E6]">
                 <button
                   type="button"
                   onClick={() => toggleItem(idx)}
@@ -70,8 +70,8 @@ export function FaqSection() {
                   <span
                     className={`font-sans text-xs sm:text-sm font-semibold transition-colors duration-150 ${
                       isOpen
-                        ? "text-[#7033a8]"
-                        : "text-[#110D1A] group-hover:text-[#7033a8]"
+                        ? "text-[#4A1A6B]"
+                        : "text-[#23092F] group-hover:text-[#4A1A6B]"
                     }`}
                   >
                     {item.question}
@@ -81,8 +81,8 @@ export function FaqSection() {
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-bold transition-all duration-200 ${
                       isOpen
-                        ? "bg-[#7033a8] text-white shadow-xs"
-                        : "bg-[#F3EEFA] text-[#7033a8]"
+                        ? "bg-[#4A1A6B] text-white shadow-xs"
+                        : "bg-[#F5EDF8] text-[#4A1A6B]"
                     }`}
                   >
                     <span
@@ -98,7 +98,7 @@ export function FaqSection() {
                 {/* Answer Content */}
                 {isOpen && (
                   <div className="pb-4 sm:pb-5 pr-8">
-                    <p className="font-sans text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed">
+                    <p className="font-sans text-xs sm:text-[13px] text-[#6B4F66] font-normal leading-relaxed">
                       {item.answer}
                     </p>
                   </div>

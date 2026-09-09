@@ -26,13 +26,13 @@ export function Button({
 
   const variantStyles = {
     primary:
-      "bg-[#7033a8] hover:bg-[#581c87] text-white shadow-[0_4px_16px_rgba(112,51,168,0.28)] hover:shadow-[0_6px_22px_rgba(112,51,168,0.38)] hover:-translate-y-0.5",
+      "bg-[#4A1A6B] hover:bg-[#381254] text-white shadow-[0_4px_16px_rgba(74,26,107,0.3)] hover:shadow-[0_6px_22px_rgba(74,26,107,0.45)] hover:-translate-y-0.5",
     secondary:
-      "border border-slate-200 bg-white hover:bg-slate-50 text-slate-800 shadow-xs hover:border-slate-300 hover:-translate-y-0.5",
+      "border border-[#ECE2E6] bg-white hover:bg-[#FAF7FC] text-[#23092F] shadow-xs hover:border-[#D6C2CE] hover:-translate-y-0.5",
     outline:
-      "border-2 border-[#7033a8] text-[#7033a8] bg-transparent hover:bg-purple-50/60 hover:-translate-y-0.5",
+      "border-2 border-[#4A1A6B] text-[#4A1A6B] bg-transparent hover:bg-[#F5EDF8]/60 hover:-translate-y-0.5",
     ghost:
-      "text-slate-700 hover:text-slate-900 hover:bg-slate-100/80",
+      "text-[#6B4F66] hover:text-[#23092F] hover:bg-[#FAF7FC]",
   };
 
   const combinedClasses = `${baseStyles} ${sizeStyles[size] || sizeStyles.md} ${

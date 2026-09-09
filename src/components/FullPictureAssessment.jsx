@@ -71,7 +71,7 @@ export function FullPictureAssessment() {
   return (
     <section
       id="full-assessment"
-      className="relative w-full bg-[#12082A] py-10 sm:py-14 lg:py-16 overflow-hidden text-white"
+      className="relative w-full bg-[#160822] py-10 sm:py-14 lg:py-16 overflow-hidden text-white"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
@@ -79,33 +79,34 @@ export function FullPictureAssessment() {
           {/* Left Column: Heading, Stats & CTA */}
           <div className="lg:col-span-7 max-w-xl">
             {/* Eyebrow Pill */}
-            <div className="inline-flex items-center rounded-full bg-[#2A1742] border border-amber-500/20 px-3 py-1 text-[11px] font-semibold text-[#FFD105] shadow-xs mb-4 sm:mb-5 font-sans">
-              Growing Minds® Assessment
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#2B1038] border border-[#3E6F5C]/40 px-3 py-1 text-[11px] font-semibold text-[#8FB8A6] shadow-xs mb-4 sm:mb-5 font-sans">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#3E6F5C]" />
+              <span>Growing Minds® Assessment</span>
             </div>
 
-            {/* Main Headline in Fraunces (Scaled to balanced proportion) */}
+            {/* Main Headline in Fraunces */}
             <h2 className="font-display text-2xl sm:text-3xl lg:text-[38px] font-bold text-white leading-[1.12] tracking-tight mb-4 sm:mb-5">
               You started this in 60 seconds. Here's the full picture.
             </h2>
 
             {/* Description in DM Sans */}
-            <p className="font-sans text-xs sm:text-[13.5px] text-slate-300/80 leading-relaxed max-w-lg mb-6 sm:mb-8">
+            <p className="font-sans text-xs sm:text-[13.5px] text-[#EADBEE]/80 leading-relaxed max-w-lg mb-6 sm:mb-8">
               A psychometrically validated instrument covering all six development
               dimensions. 25–35 minutes. Complete from home. Produces a report that
               tells you something actionable.
             </p>
 
-            {/* 4 Metric / Stat Boxes (More compact) */}
+            {/* 4 Metric / Stat Boxes */}
             <div className="grid grid-cols-4 gap-2 sm:gap-2.5 max-w-md mb-6 sm:mb-8">
               {STATS.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-xl bg-[#1D1136]/90 border border-white/[0.07] p-2.5 sm:p-3 text-center shadow-xs transition-colors hover:border-purple-500/30"
+                  className="rounded-xl bg-[#240C32]/90 border border-white/[0.08] p-2.5 sm:p-3 text-center shadow-xs transition-colors hover:border-[#4A1A6B]/60"
                 >
                   <p className="font-display text-lg sm:text-xl lg:text-[22px] font-bold text-white tracking-tight">
                     {stat.value}
                   </p>
-                  <p className="font-sans text-[10px] sm:text-[11px] text-slate-400 font-normal mt-0.5">
+                  <p className="font-sans text-[10px] sm:text-[11px] text-[#C2B5C6] font-normal mt-0.5">
                     {stat.label}
                   </p>
                 </div>
@@ -116,7 +117,7 @@ export function FullPictureAssessment() {
             <div>
               <a
                 href="#start-assessment"
-                className="inline-flex items-center gap-2 rounded-full bg-[#FFD105] hover:bg-[#FACC15] text-[#110D1A] font-sans font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 shadow-md shadow-amber-500/10 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-full bg-[#FFD105] hover:bg-[#FACC15] text-[#23092F] font-sans font-bold text-xs sm:text-sm px-5 sm:px-6 py-2.5 sm:py-3 shadow-md shadow-amber-500/10 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 <span>Start my child's full assessment</span>
                 <span className="font-bold text-sm sm:text-base">→</span>
@@ -124,21 +125,21 @@ export function FullPictureAssessment() {
             </div>
           </div>
 
-          {/* Right Column: 3 Feature Cards (More compact) */}
+          {/* Right Column: 3 Feature Cards */}
           <div className="lg:col-span-5 w-full space-y-2.5 sm:space-y-3">
             {FEATURES.map((item) => (
               <div
                 key={item.title}
-                className="rounded-xl sm:rounded-2xl bg-[#1D1136]/90 border border-white/[0.07] p-4 sm:p-4.5 flex items-start gap-3 sm:gap-4 shadow-lg shadow-purple-950/20 transition-all duration-200 hover:border-purple-500/30"
+                className="rounded-xl sm:rounded-2xl bg-[#240C32]/90 border border-white/[0.08] p-4 sm:p-4.5 flex items-start gap-3 sm:gap-4 shadow-lg shadow-[#23092F]/40 transition-all duration-200 hover:border-[#4A1A6B]/60"
               >
-                <div className="shrink-0 w-7 h-7 rounded-lg flex items-center justify-center mt-0.5">
+                <div className="shrink-0 w-7 h-7 rounded-lg bg-[#331444] flex items-center justify-center mt-0.5 text-[#D9A07E]">
                   {item.icon}
                 </div>
                 <div className="flex-1">
                   <h3 className="font-display text-sm sm:text-[15px] font-bold text-white leading-snug">
                     {item.title}
                   </h3>
-                  <p className="font-sans text-xs sm:text-[12.5px] text-slate-300/80 font-normal mt-0.5 leading-relaxed">
+                  <p className="font-sans text-xs sm:text-[12.5px] text-[#EADBEE]/80 font-normal mt-0.5 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
