@@ -8,6 +8,7 @@ import { WhyTrustUs } from "./components/WhyTrustUs";
 import { TestimonialsSection } from "./components/TestimonialsSection";
 import { FaqSection } from "./components/FaqSection";
 import { FinalCtaSection } from "./components/FinalCtaSection";
+import { OriChatbot } from "./components/OriChatbot";
 
 export default function App() {
   return (
@@ -25,6 +26,9 @@ export default function App() {
         <FinalCtaSection />
       </main>
       <Footer />
+      {/* Ori — floating AI chat assistant */}
+      <OriChatbot />
     </div>
   );
 }
+
