@@ -1,69 +1,45 @@
+import React from "react";
+import { Lock, Landmark, MessageSquare } from "lucide-react";
+
 const TRUST_PILLARS = [
   {
+    id: "data-privacy",
     title: "Your child's data stays yours",
     description: "Encrypted at rest, never sold. Request deletion any time.",
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-        <rect x="5" y="11" width="14" height="10" rx="2.5" fill="#FAF1EC" stroke="#C87E4F" strokeWidth="1.5" />
-        <path
-          d="M8 11V7a4 4 0 0 1 8 0v4"
-          stroke="#C87E4F"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <circle cx="12" cy="16" r="1.5" fill="#C87E4F" />
-      </svg>
-    ),
+    icon: <Lock className="w-6 h-6 stroke-[1.8] text-[#D97706]" />,
   },
   {
+    id: "science",
     title: "Grounded in established science",
     description:
       "Every dimension has a peer-reviewed basis. We cite sources in the report.",
-    icon: (
-      <svg
-        className="w-6 h-6 text-[#3E6F5C]"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M3 21h18M3 10h18M5 10v11M9 10v11M15 10v11M19 10v11M12 3L2 7h20L12 3z" />
-      </svg>
-    ),
+    icon: <Landmark className="w-6 h-6 stroke-[1.8] text-[#0D9488]" />,
   },
   {
+    id: "indian-families",
     title: "Built for Indian families",
     description: "Founded in Bengaluru, normed on Indian children.",
     icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-        <circle cx="12" cy="12" r="9" fill="#F5EDF8" stroke="#4A1A6B" strokeWidth="1.5" />
-        <path
-          d="M12 3a9 9 0 0 0-9 9c0 1.6.4 3.1 1.2 4.4L8 15l2-2 1.5 1.5 2-1 1 2 2.5-1.5.5 2.5A9 9 0 0 0 21 12a9 9 0 0 0-9-9z"
-          fill="#E8F3EE"
-          stroke="#3E6F5C"
-          strokeWidth="1.2"
-        />
+      <svg
+        className="w-6 h-6 text-[#0D9488]"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <path d="M7 14.5l3-3.5 2.5 2.5 4.5-4.5" />
       </svg>
     ),
   },
   {
+    id: "transparency",
     title: "Transparent about what we don't do",
     description:
       "We're not a diagnostic service. We'll tell you when a referral is needed.",
-    icon: (
-      <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5c-1.5 0-2.9-.4-4.1-1.1L3 19l1.4-4.7A7.5 7.5 0 1 1 20 11.5z"
-          fill="#F5EDF8"
-          stroke="#4A1A6B"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
+    icon: <MessageSquare className="w-6 h-6 stroke-[1.8] text-[#7C3AED]" />,
   },
 ];
 
@@ -71,45 +47,62 @@ export function WhyTrustUs() {
   return (
     <section
       id="trust"
-      className="relative w-full bg-[#FAF7FC] py-10 sm:py-14 lg:py-16 overflow-hidden transition-colors"
+      className="relative w-full bg-[#FAF8FE] py-16 sm:py-20 lg:py-24 overflow-hidden"
+      aria-labelledby="trust-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-xl mx-auto mb-8 sm:mb-11">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#23092F] leading-tight tracking-tight">
+      {/* Subtle ambient light backdrops */}
+      <div
+        className="pointer-events-none absolute top-1/2 -left-32 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-purple-200/20 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute top-1/2 -right-32 -translate-y-1/2 h-[400px] w-[400px] rounded-full bg-emerald-100/25 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-[1240px] px-6 sm:px-8 relative z-10">
+        {/* Centered Section Header */}
+        <div className="text-center max-w-2xl mx-auto">
+          <h2
+            id="trust-heading"
+            className="font-display text-[32px] sm:text-[42px] lg:text-[48px] font-bold text-[#1F0E2E] leading-tight tracking-tight"
+          >
             Here is why you can trust us.
           </h2>
-          <p className="font-sans text-xs sm:text-[13px] text-[#6B4F66] font-normal mt-2 leading-relaxed">
-            You're handing us sensitive information about your child. We take
-            that seriously.
+          <p className="mt-3.5 text-[15px] sm:text-[16.5px] leading-relaxed text-[#5A4860] font-normal">
+            You're handing us sensitive information about your child. We take that seriously.
           </p>
         </div>
 
         {/* 4 Trust Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 items-stretch">
+        <div className="mt-12 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {TRUST_PILLARS.map((pillar) => (
             <div
-              key={pillar.title}
-              className="bg-white rounded-2xl border border-[#ECE2E6] p-5 sm:p-5.5 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-start"
+              key={pillar.id}
+              className="group bg-white rounded-2xl sm:rounded-3xl border border-slate-100 p-6 sm:p-7 shadow-[0_4px_24px_rgba(35,9,47,0.03)] hover:shadow-xl hover:border-purple-200/70 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-start cursor-default"
             >
-              {/* Pillar Icon */}
-              <div className="mb-3.5 sm:mb-4">{pillar.icon}</div>
+              {/* Icon */}
+              <div className="mb-4 transition-transform duration-300 group-hover:scale-105">
+                {pillar.icon}
+              </div>
 
-              {/* Pillar Title in Fraunces */}
-              <h3 className="font-display text-sm sm:text-[15px] font-bold text-[#23092F] leading-snug mb-1.5">
+              {/* Title */}
+              <h3 className="font-display text-[17px] sm:text-[18px] font-bold text-[#1F0E2E] leading-snug mb-2 transition-colors duration-200 group-hover:text-[#784AE8]">
                 {pillar.title}
               </h3>
 
-              {/* Pillar Description in DM Sans */}
-              <p className="font-sans text-xs text-[#6B4F66] font-normal leading-relaxed">
+              {/* Description */}
+              <p className="text-[13.5px] sm:text-[14px] text-[#5A4860] leading-relaxed font-normal">
                 {pillar.description}
               </p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
 }
+
+// Re-exports for backward compatibility
+export const TrustSection = WhyTrustUs;
+export default WhyTrustUs;

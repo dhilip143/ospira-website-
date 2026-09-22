@@ -1,145 +1,154 @@
-import React, { useState } from "react";
-import { Play, X } from "lucide-react";
+import React from "react";
+import {
+  BookOpen,
+  Smartphone,
+  Star,
+  Heart,
+  MessageSquare,
+  Compass,
+} from "lucide-react";
 
-/**
- * HowItWorksBanner Component
- * Replicates the "Sixty seconds. The full picture." banner with:
- * - Editorial Fraunces heading & DM Sans typography
- * - Left image with interactive white & purple floating play button
- * - Clean white card with subtle elevation and right-hand watermark rings
- * - Interactive video modal
- * - 100% mobile responsive
- */
-export function HowItWorksBanner({
-  videoUrl = "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1",
-}) {
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
+export function HowItWorksBanner() {
+  const results = [
+    {
+      id: "focus-study",
+      title: "Improved Focus & Study Habits",
+      description:
+        "Boost concentration and learning outcomes with consistent study habits and reduced distractions.",
+      icon: BookOpen,
+      iconBg: "bg-[#F3EDFB]",
+      iconColor: "text-[#7C3AED]",
+    },
+    {
+      id: "screen-time",
+      title: "Reduced Screen Time & Dependency",
+      description:
+        "Support healthier screen time habits and move toward balanced, intentional daily routines.",
+      icon: Smartphone,
+      iconBg: "bg-[#E0F4FE]",
+      iconColor: "text-[#0284C7]",
+    },
+    {
+      id: "confidence-motivation",
+      title: "Stronger Self-Confidence & Motivation",
+      description:
+        "Help your child build self-esteem, feel capable, secure, and motivated to grow.",
+      icon: Star,
+      iconBg: "bg-[#FEF6E0]",
+      iconColor: "text-[#D97706]",
+    },
+    {
+      id: "emotional-regulation",
+      title: "Better Emotional Regulation",
+      description:
+        "Support emotional development with fewer outbursts, greater resilience, and improved self-control.",
+      icon: Heart,
+      iconBg: "bg-[#E0F7F2]",
+      iconColor: "text-[#0D9488]",
+    },
+    {
+      id: "parent-child-comm",
+      title: "Stronger Parent-Child Communication",
+      description:
+        "Improve family communication with more openness, less conflict, and deeper mutual understanding.",
+      icon: MessageSquare,
+      iconBg: "bg-[#E8F8EE]",
+      iconColor: "text-[#16A34A]",
+    },
+    {
+      id: "career-guidance",
+      title: "Clearer Career Direction & Guidance",
+      description:
+        "Get expert career guidance for teens with greater clarity on strengths, interests, and future pathways.",
+      icon: Compass,
+      iconBg: "bg-[#F2EDFD]",
+      iconColor: "text-[#7C3AED]",
+    },
+  ];
 
   return (
     <section
       id="how-it-works"
-      className="relative bg-white py-12 sm:py-16 lg:py-20"
+      className="relative bg-[#FAF8FE] py-16 sm:py-20 lg:py-28 overflow-hidden"
+      aria-labelledby="results-heading"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        {/* Main Card Container */}
-        <div className="relative overflow-hidden rounded-[1.75rem] sm:rounded-[2.25rem] bg-white border border-slate-100 shadow-[0_12px_44px_rgba(15,23,42,0.06)] transition-all duration-300 hover:shadow-[0_18px_54px_rgba(15,23,42,0.09)]">
-          {/* Subtle concentric circles watermark on far right background */}
-          <div
-            className="pointer-events-none absolute -right-16 sm:-right-10 top-1/2 -translate-y-1/2 select-none opacity-[0.04]"
-            aria-hidden="true"
+      <div id="results" />
+
+      {/* Subtle ambient light aura in background */}
+      <div
+        className="pointer-events-none absolute -top-32 right-0 h-[450px] w-[450px] rounded-full bg-purple-200/25 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -bottom-32 left-0 h-[400px] w-[400px] rounded-full bg-emerald-100/30 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-[1240px] px-6 sm:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="max-w-3xl">
+          {/* Eyebrow */}
+          <div className="text-[12px] sm:text-[13px] font-bold tracking-[0.16em] uppercase text-[#784AE8]">
+            THE RESULTS
+          </div>
+
+          {/* Main Headline */}
+          <h2
+            id="results-heading"
+            className="mt-3.5 font-display text-[32px] sm:text-[42px] lg:text-[52px] font-semibold leading-[1.12] tracking-[-0.015em] text-[#1F0E2E]"
           >
-            <svg
-              className="h-64 w-64 sm:h-80 sm:w-80 text-[#4A1A6B]"
-              viewBox="0 0 200 200"
-              fill="none"
-              stroke="currentColor"
-            >
-              <circle cx="100" cy="100" r="90" strokeWidth="14" />
-              <circle cx="100" cy="100" r="60" strokeWidth="12" />
-              <circle cx="100" cy="100" r="30" strokeWidth="10" />
-            </svg>
-          </div>
+            What Changes for{" "}
+            <span className="text-[#8B5CF6]">
+              Your Child’s
+            </span>
+            <br />
+            <span className="text-[#8B5CF6]">
+              Behaviour, Learning &amp; Development
+            </span>
+          </h2>
 
-          <div className="grid md:grid-cols-12 items-center">
-            {/* Left Column: Image Thumbnail & Floating Play Button */}
-            <div className="relative md:col-span-5 lg:col-span-4 h-56 sm:h-64 md:h-full md:min-h-[220px] overflow-hidden bg-slate-100">
-              <img
-                src="/children-reading.jpg"
-                alt="Two children reading an illustrated storybook together"
-                className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-103"
-                loading="lazy"
-              />
+          {/* Subheading - nice legible size as requested */}
+          <p className="mt-4 text-[17px] sm:text-[18.5px] leading-[1.65] text-[#5A4860] font-normal">
+            Real, visible shifts in how your child learns, behaves, and responds — when you guide
+            them with expert-backed clarity.
+          </p>
+        </div>
 
-              {/* Floating Play Button */}
-              <button
-                type="button"
-                onClick={() => setIsVideoOpen(true)}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:translate-x-0 md:-right-6 z-20 flex h-13 w-13 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-white shadow-[0_8px_24px_rgba(35,9,47,0.18)] border border-[#ECE2E6] transition-all duration-300 hover:scale-110 hover:shadow-[0_12px_30px_rgba(74,26,107,0.3)] active:scale-95 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#4A1A6B]"
-                aria-label="Play Sixty Seconds Overview Video"
+        {/* 6 Result Cards Grid */}
+        <div className="mt-12 sm:mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          {results.map((item) => {
+            const IconComp = item.icon;
+            return (
+              <div
+                key={item.id}
+                className="group relative rounded-2xl sm:rounded-3xl border border-purple-50/80 bg-white p-7 sm:p-8 shadow-[0_4px_24px_rgba(35,9,47,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-purple-200/80 hover:shadow-[0_16px_36px_-6px_rgba(120,74,232,0.12)] cursor-default"
               >
-                <Play className="h-5 w-5 sm:h-6 sm:w-6 fill-[#4A1A6B] text-[#4A1A6B] ml-0.5 transition-transform duration-200 group-hover:scale-105" />
-              </button>
-            </div>
-
-            {/* Right Column: Text Content */}
-            <div className="relative z-10 md:col-span-7 lg:col-span-8 p-6 sm:p-8 md:pl-10 lg:pl-12 lg:pr-14">
-              {/* Eyebrow in Sage Green */}
-              <div className="flex items-center gap-2 text-[0.72rem] sm:text-xs font-sans font-extrabold tracking-[0.18em] text-[#3E6F5C] uppercase">
-                <span className="w-5 h-0.5 bg-[#3E6F5C]" aria-hidden="true" />
-                <span>See How Ospira Works</span>
-              </div>
-
-              {/* Heading (Fraunces Display Serif in Deep Aubergine #23092F) */}
-              <h2 className="mt-2 text-2xl sm:text-3xl lg:text-[2.2rem] font-bold font-display text-[#23092F] tracking-tight leading-[1.18]">
-                Sixty seconds. The full picture.
-              </h2>
-
-              {/* Subheading (DM Sans in Mauve-Slate #6B4F66) */}
-              <p className="mt-2.5 sm:mt-3 text-sm sm:text-base font-sans text-[#6B4F66] leading-relaxed max-w-lg">
-                A quick walk through the Ospira journey, from your first check-in
-                to your child's plan.
-              </p>
-
-              {/* Action Link */}
-              <div className="mt-4 sm:mt-5">
-                <button
-                  type="button"
-                  onClick={() => setIsVideoOpen(true)}
-                  className="inline-flex items-center gap-1.5 text-sm sm:text-base font-sans font-semibold text-[#4A1A6B] hover:text-[#381254] transition-all group cursor-pointer focus:outline-none"
+                {/* Icon Container */}
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-xl sm:rounded-2xl ${item.iconBg} ${item.iconColor} transition-transform duration-300 group-hover:scale-110`}
                 >
-                  <span>Watch Video</span>
-                  <span
-                    aria-hidden="true"
-                    className="text-base transition-transform duration-200 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
-                </button>
+                  <IconComp className="h-6 w-6 stroke-[1.9]" />
+                </div>
+
+                {/* Card Title - brand display serif font */}
+                <h3 className="mt-5 font-display text-[18.5px] sm:text-[20px] font-bold tracking-tight text-[#1F0E2E] transition-colors duration-200 group-hover:text-[#784AE8]">
+                  {item.title}
+                </h3>
+
+                {/* Card Description - nice comfortable legible size */}
+                <p className="mt-2.5 text-[15px] sm:text-[15.5px] leading-[1.62] text-[#5A4860] font-normal">
+                  {item.description}
+                </p>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
-
-      {/* Video Modal Player */}
-      {isVideoOpen && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 p-4 backdrop-blur-sm animate-in fade-in duration-200"
-          onClick={() => setIsVideoOpen(false)}
-          role="dialog"
-          aria-modal="true"
-        >
-          <div
-            className="relative w-full max-w-3xl overflow-hidden rounded-2xl bg-black shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              type="button"
-              onClick={() => setIsVideoOpen(false)}
-              className="absolute top-3 right-3 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/90 transition-colors"
-              aria-label="Close video"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            {/* Responsive Video Container (16:9) */}
-            <div className="relative aspect-video w-full">
-              <iframe
-                className="h-full w-full border-0"
-                src={videoUrl}
-                title="Sixty seconds. The full picture."
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }
 
-// Re-export as HowItWorks for backward compatibility
+// Re-exports for backward compatibility
 export const HowItWorks = HowItWorksBanner;
+export const ResultsSection = HowItWorksBanner;
 export default HowItWorksBanner;

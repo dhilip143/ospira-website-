@@ -1,281 +1,166 @@
-import { useState } from "react";
-
-const TABS = [
-  {
-    id: "behaviour",
-    label: "Behaviour",
-    eyebrow: "BEHAVIOUR",
-    headline:
-      "See the patterns in how your child responds, relates and finds their place — without reducing them to a label.",
-    tags: [
-      "ARTP behavioural mapping",
-      "Habit-loop triggers",
-      "Frustration tolerance curve",
-    ],
-    sampleLabel: "Sample recommendation",
-    recommendation:
-      "Shift the demand, not the discipline: same task, different entry point.",
-  },
-  {
-    id: "learning",
-    label: "Learning",
-    eyebrow: "LEARNING",
-    headline:
-      "Identify how their brain absorbs, questions and locks in knowledge — beyond standard classroom metrics.",
-    tags: [
-      "Cognitive processing speed",
-      "Focus & flow triggers",
-      "Information retention arcs",
-    ],
-    sampleLabel: "Sample recommendation",
-    recommendation:
-      "Pair visual frameworks with hands-on practice before introducing abstract verbal theory.",
-  },
-  {
-    id: "emotion",
-    label: "Emotion",
-    eyebrow: "EMOTION",
-    headline:
-      "Decode their emotional regulation, distress signals and recovery patterns with calm, compassionate clarity.",
-    tags: [
-      "Co-regulation needs",
-      "Emotional recovery curve",
-      "Stress overload signals",
-    ],
-    sampleLabel: "Sample recommendation",
-    recommendation:
-      "Validate the underlying feeling first before offering solutions to engage their problem-solving state.",
-  },
-  {
-    id: "career",
-    label: "Career readiness",
-    eyebrow: "CAREER READINESS",
-    headline:
-      "Discover natural inclinations, curiosity drivers and problem-solving architectures built for the future.",
-    tags: [
-      "Natural inclination profile",
-      "Problem-solving architecture",
-      "Emerging leadership traits",
-    ],
-    sampleLabel: "Sample recommendation",
-    recommendation:
-      "Encourage open-ended projects that blend instinctive curiosity with tangible real-world outcomes.",
-  },
-];
-
-const STEPS = [
-  {
-    number: "01",
-    title: "Assess",
-    description: "See the patterns beneath everyday moments.",
-    iconBg: "bg-[#F5EDF8]",
-    icon: (
-      <svg
-        className="w-3.5 h-3.5 text-[#4A1A6B]"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <line x1="6" y1="18" x2="17" y2="7" />
-        <circle cx="18" cy="6" r="2.5" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    number: "02",
-    title: "Understand",
-    description: "Turn observations into a fuller view.",
-    iconBg: "bg-[#E8F3EE]",
-    icon: (
-      <svg
-        className="w-3.5 h-3.5 text-[#3E6F5C]"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M8 5c-3.2 3.8-3.2 10.2 0 14" />
-        <path d="M16 5c3.2 3.8 3.2 10.2 0 14" />
-        <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    number: "03",
-    title: "Act",
-    description: "Move forward with relevant next steps.",
-    iconBg: "bg-[#FAF1EC]",
-    icon: (
-      <svg
-        className="w-3.5 h-3.5 text-[#C87E4F]"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <line x1="6" y1="18" x2="17" y2="7" />
-        <circle cx="18" cy="6" r="2.5" fill="currentColor" />
-      </svg>
-    ),
-  },
-];
+import React from "react";
+import { Eye, Sparkles, Compass } from "lucide-react";
 
 export function NoticeKnowDo() {
-  const [activeTab, setActiveTab] = useState(0);
-  const [activeStep, setActiveStep] = useState(1);
+  const steps = [
+    {
+      id: "assess",
+      number: "01",
+      subtitle: "NOTICE MORE.",
+      title: "Assess",
+      icon: Eye,
+      description:
+        "Child and parent each complete the Growing Minds® Assessment independently — 25–35 minutes of questions that surface what school reports and gut instincts miss.",
+      tags: ["Behaviour", "Learning", "Emotion"],
+    },
+    {
+      id: "understand",
+      number: "02",
+      subtitle: "KNOW MORE.",
+      title: "Understand",
+      icon: Sparkles,
+      description:
+        "You receive a combined family report that translates the data into plain language. Six dimensions mapped. Strengths surfaced. Gaps named.",
+      tags: ["Career Readiness", "Social Skills", "Focus"],
+    },
+    {
+      id: "act",
+      number: "03",
+      subtitle: "DO MORE.",
+      title: "Act",
+      icon: Compass,
+      description:
+        "Two coaching sessions — one with your child, one with you — turn insight into a practical Growth Roadmap your family can actually follow.",
+      tags: ["Growth Roadmap", "Coach Sessions", "Family Plan"],
+    },
+  ];
 
-  const currentTab = TABS[activeTab];
+  const dimensions = [
+    "Behaviour",
+    "Learning & Attention",
+    "Emotional Intelligence",
+    "Career Readiness",
+    "Social Skills",
+    "Self-Regulation",
+  ];
 
   return (
     <section
-      id="lens"
-      className="relative w-full bg-[#FAF7FC] py-10 sm:py-14 lg:py-16 overflow-hidden transition-colors"
+      id="approach"
+      className="relative bg-[#632299] text-white py-16 sm:py-20 lg:py-24 overflow-hidden"
+      aria-labelledby="approach-heading"
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          
-          {/* Left Column: Heading & 3 Steps */}
-          <div className="lg:col-span-5 max-w-lg">
-            {/* Eyebrow with leading dash */}
-            <p className="font-sans text-[11px] font-bold uppercase tracking-[0.16em] text-[#3E6F5C] mb-3 sm:mb-4 flex items-center gap-2">
-              <span className="inline-block w-4 h-[1.5px] bg-[#3E6F5C]" />
-              <span>NOT ADVICE. A CLEARER LENS.</span>
-            </p>
+      <div id="lens" />
 
-            {/* Fraunces Headline: Notice more. Know more. Do more. */}
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-[38px] font-bold leading-[1.1] tracking-tight mb-5 sm:mb-7">
-              <span className="block text-[#23092F]">Notice more.</span>
-              <span className="block text-[#4A1A6B]">Know more.</span>
-              <span className="block text-[#23092F]">Do more.</span>
-            </h2>
+      {/* Subtle ambient light glow overlays */}
+      <div
+        className="pointer-events-none absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-purple-400/20 blur-[100px]"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -bottom-40 -left-40 h-[500px] w-[500px] rounded-full bg-indigo-400/20 blur-[100px]"
+        aria-hidden="true"
+      />
 
-            {/* 3 Step Process List with Dividers */}
-            <div className="w-full">
-              {STEPS.map((step, idx) => {
-                return (
-                  <div key={step.number} className="w-full">
-                    <button
-                      type="button"
-                      onClick={() => setActiveStep(idx)}
-                      className="w-full text-left py-3.5 sm:py-4 flex items-start gap-3.5 transition-all duration-150 hover:opacity-90 group cursor-pointer"
-                    >
-                      {/* Step Circle Badge */}
-                      <div
-                        className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center ${step.iconBg} shadow-xs transition-transform duration-200 group-hover:scale-105`}
-                      >
-                        {step.icon}
-                      </div>
-
-                      {/* Step Content */}
-                      <div className="pt-0.5 flex-1">
-                        <div className="flex items-baseline gap-2">
-                          <span className="font-sans text-xs font-semibold text-[#6B4F66]/70">
-                            {step.number}
-                          </span>
-                          <span className="font-display text-base sm:text-lg font-bold text-[#23092F]">
-                            {step.title}
-                          </span>
-                        </div>
-                        <p className="font-sans text-xs sm:text-[13px] text-[#6B4F66] font-normal mt-0.5 leading-relaxed">
-                          {step.description}
-                        </p>
-                      </div>
-                    </button>
-
-                    {/* Horizontal Divider Lines */}
-                    {idx === 0 && (
-                      <div className="w-full h-[1px] bg-[#ECE2E6]" />
-                    )}
-                    {idx === 1 && (
-                      <div className="w-full h-[1.5px] bg-[#23092F]" />
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+      <div className="mx-auto max-w-[1240px] px-6 sm:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="max-w-3xl">
+          <div className="text-[12px] sm:text-[13px] font-bold tracking-[0.18em] uppercase text-white/70 font-sans">
+            OUR APPROACH
           </div>
 
-          {/* Right Column: Scaled Dark Card in Deep Aubergine */}
-          <div className="lg:col-span-7 w-full flex justify-center lg:justify-end">
-            <div className="w-full max-w-[580px] bg-[#160822] text-white rounded-[24px] sm:rounded-[28px] p-5 sm:p-7 lg:p-8 shadow-xl shadow-[#23092F]/30 border border-white/[0.08]">
-              
-              {/* Top Navigation Tabs */}
-              <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1">
-                {TABS.map((tab, idx) => {
-                  const isActive = activeTab === idx;
-                  return (
-                    <button
-                      key={tab.id}
-                      type="button"
-                      onClick={() => setActiveTab(idx)}
-                      className={`whitespace-nowrap px-3.5 py-1 text-xs font-medium rounded-full transition-all duration-200 cursor-pointer ${
-                        isActive
-                          ? "border border-[#4A1A6B] bg-[#2E1242] text-[#F5EDF8] shadow-xs"
-                          : "text-white/60 hover:text-white"
-                      }`}
-                    >
-                      {tab.label}
-                    </button>
-                  );
-                })}
-              </div>
+          <h2
+            id="approach-heading"
+            className="mt-4 font-display text-[28px] xs:text-[32px] sm:text-[44px] lg:text-[54px] font-medium leading-[1.12] tracking-tight text-white"
+          >
+            Notice more. <span className="italic font-serif text-white/95">Know</span>
+            <br />
+            <span className="italic font-serif text-white/95">more.</span> Do more.
+          </h2>
 
-              {/* Category Eyebrow in Card */}
-              <div className="mt-5 sm:mt-6">
-                <span className="font-sans text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.16em] text-[#8FB8A6]">
-                  {currentTab.eyebrow}
-                </span>
+          {/* Subheading with nice comfortable legible size */}
+          <p className="mt-4 text-[16px] sm:text-[18px] leading-[1.68] text-white/80 font-normal max-w-2xl">
+            Three steps — built around how families actually work, not how clinicians prefer to
+            think about child development.
+          </p>
+        </div>
 
-                {/* Main Tab Headline in Fraunces */}
-                <h3 className="font-display text-base sm:text-lg lg:text-[20px] font-semibold text-white leading-snug mt-2">
-                  {currentTab.headline}
-                </h3>
-              </div>
+        {/* 3 Approach Step Cards */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+          {steps.map((step) => {
+            const IconComp = step.icon;
+            return (
+              <div
+                key={step.id}
+                className="group relative flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-white/15 bg-white/[0.08] p-6 sm:p-7 lg:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-white/30 hover:bg-white/[0.12] hover:shadow-2xl"
+              >
+                <div>
+                  {/* Top Header: Step Number & Circular Icon */}
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <span className="font-display text-[40px] sm:text-[46px] font-bold text-white/20 leading-none select-none block">
+                        {step.number}
+                      </span>
+                      <span className="font-sans text-[11px] sm:text-[12px] font-bold tracking-[0.16em] uppercase text-white/80 block mt-1">
+                        {step.subtitle}
+                      </span>
+                    </div>
 
-              {/* Sub-panel: WHAT OSPIRA MAPS */}
-              <div className="mt-5 sm:mt-6 rounded-xl sm:rounded-2xl bg-[#251036]/90 border border-white/[0.08] p-4 sm:p-5">
-                <span className="block font-sans text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.14em] text-white/60 mb-2.5">
-                  WHAT OSPIRA MAPS
-                </span>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/[0.04] text-white/90 shadow-xs transition-transform duration-300 group-hover:scale-110 group-hover:border-white/40">
+                      <IconComp className="h-4 w-4 stroke-[2]" />
+                    </div>
+                  </div>
 
-                {/* Pill Tags */}
-                <div className="flex flex-wrap items-center gap-2">
-                  {currentTab.tags.map((tag) => (
+                  {/* Step Title */}
+                  <h3 className="mt-5 font-display text-[22px] sm:text-[24px] font-bold text-white">
+                    {step.title}
+                  </h3>
+
+                  {/* Step Description - nice legible size */}
+                  <p className="mt-2.5 text-[14.5px] sm:text-[15.5px] leading-[1.65] text-white/80 font-normal">
+                    {step.description}
+                  </p>
+                </div>
+
+                {/* Bottom Pill Tags */}
+                <div className="mt-7 pt-5 border-t border-white/10 flex flex-wrap gap-2">
+                  {step.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="whitespace-nowrap inline-flex items-center rounded-full bg-[#36174D] border border-white/[0.08] px-3 py-1 font-sans text-[11px] sm:text-xs text-[#F5EDF8] font-medium shadow-2xs"
+                      className="rounded-full border border-white/20 bg-white/10 px-3.5 py-1 text-[11.5px] sm:text-[12px] font-medium text-white shadow-2xs transition-colors hover:bg-white/20"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-
-                {/* Sample Recommendation */}
-                <div className="mt-4 pt-3.5 border-t border-white/[0.08]">
-                  <div className="flex items-center gap-1.5 text-white/70">
-                    <span className="text-[#C87E4F] text-xs select-none">"</span>
-                    <span className="font-sans text-[11px] sm:text-xs font-medium tracking-wide text-[#D9A07E]">
-                      {currentTab.sampleLabel}
-                    </span>
-                  </div>
-                  <p className="font-sans text-xs sm:text-[13px] text-white/85 font-normal italic mt-1 leading-relaxed">
-                    {currentTab.recommendation}
-                  </p>
-                </div>
               </div>
+            );
+          })}
+        </div>
 
-            </div>
+        {/* Bottom Section: SIX DIMENSIONS WE MEASURE */}
+        <div className="mt-16 sm:mt-20">
+          <div className="text-[11.5px] sm:text-[12px] font-bold tracking-[0.16em] uppercase text-white/70 mb-3.5">
+            SIX DIMENSIONS WE MEASURE
           </div>
 
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+            {dimensions.map((dimension) => (
+              <div
+                key={dimension}
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[13px] sm:text-[14px] font-medium text-white shadow-xs backdrop-blur-sm transition-all duration-200 hover:bg-white/20 hover:border-white/35"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-white/70 shrink-0" aria-hidden="true" />
+                <span>{dimension}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+// Re-exports for backward compatibility
+export const ApproachSection = NoticeKnowDo;
+export default NoticeKnowDo;

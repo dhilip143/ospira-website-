@@ -1,139 +1,175 @@
-const PROGRAMMES = [
-  {
-    id: "career",
-    age: "Ages 14–18",
-    ageColor: "text-[#3E6F5C]",
-    title: "Career Discovery",
-    description:
-      "For adolescents navigating subject choices, career direction, and self-identity.",
-    items: [
-      "Growing Minds® Assessment",
-      "Career aptitude mapping",
-      "3 coaching sessions",
-      "Growth Roadmap",
-      "Dashboard access",
-    ],
-    checkColor: "text-[#3E6F5C]",
-    buttonText: "Start Career Discovery →",
-    buttonBg:
-      "bg-[#E8F3EE] hover:bg-[#D9ECE3] text-[#3E6F5C] border border-[#CDE5DA]",
-    isPopular: false,
-    borderColor: "border border-[#ECE2E6]",
-  },
-  {
-    id: "development",
-    age: "Ages 4–13",
-    ageColor: "text-[#4A1A6B]",
-    title: "Child Development",
-    description:
-      "A full developmental picture — all six dimensions plus an actionable family plan.",
-    items: [
-      "Growing Minds® Assessment",
-      "Comprehensive Report",
-      "Family Alignment Session",
-      "4 coaching sessions",
-      "Growth Roadmap",
-      "Dashboard access",
-    ],
-    checkColor: "text-[#4A1A6B]",
-    buttonText: "Start Child Development →",
-    buttonBg:
-      "bg-[#4A1A6B] hover:bg-[#381254] text-white shadow-md shadow-[#4A1A6B]/20",
-    isPopular: true,
-    borderColor: "border-2 border-[#4A1A6B]",
-  },
-  {
-    id: "transformation",
-    age: "All ages",
-    ageColor: "text-[#C87E4F]",
-    title: "Complete Transformation",
-    description:
-      "For families committed to sustained change — extended coaching and quarterly reviews.",
-    items: [
-      "Everything in both programmes",
-      "8 coaching sessions",
-      "Quarterly reviews",
-      "Priority support",
-      "Sibling assessment",
-    ],
-    checkColor: "text-[#C87E4F]",
-    buttonText: "Start Complete Transformation →",
-    buttonBg:
-      "bg-[#FAF1EC] hover:bg-[#F5E5DC] text-[#C87E4F] border border-[#F0D5C7]",
-    isPopular: false,
-    borderColor: "border border-[#ECE2E6]",
-  },
-];
+import React from "react";
+import { Check, ArrowRight } from "lucide-react";
 
 export function WaysWeCanHelp() {
+  const plans = [
+    {
+      id: "career-discovery",
+      title: "Career Discovery",
+      description: "Turn uncertainty about the future into a confident next step.",
+      items: [
+        "Growing Minds® Career Assessment",
+        "Career Report",
+        "One 45-min coach session",
+      ],
+      buttonText: "Start Career Discovery",
+      isPopular: false,
+      isComingSoon: false,
+      href: "#quiz",
+    },
+    {
+      id: "child-development",
+      title: "Child Development",
+      description: "A complete view of where your child is, and what helps next.",
+      items: [
+        "Full Growing Minds® Assessment (child + parent)",
+        "AI-generated combined report",
+        "Two separate 45-min coach sessions",
+        "Structured Growth Roadmap",
+      ],
+      buttonText: "Start Child Development",
+      isPopular: false,
+      isComingSoon: false,
+      href: "#quiz",
+    },
+    {
+      id: "complete-transformation",
+      title: "Complete Transformation",
+      description: "Sustained support for families ready to go deeper.",
+      items: [
+        "Everything in Child Development",
+        "Extended coaching",
+        "Ongoing progress support",
+      ],
+      buttonText: "Start Transformation",
+      isPopular: true,
+      isComingSoon: false,
+      href: "#quiz",
+    },
+    {
+      id: "ongoing-family-support",
+      title: "Ongoing Family Support",
+      description:
+        "Longer-term guidance for families who want continued support after their roadmap.",
+      items: [
+        "Regular family check-ins",
+        "Progress reviews",
+        "Continued coaching support",
+      ],
+      buttonText: "Not available yet",
+      isPopular: false,
+      isComingSoon: true,
+      href: null,
+    },
+  ];
+
   return (
     <section
       id="ways-we-help"
-      className="relative w-full bg-[#FAF7FC] py-10 sm:py-14 lg:py-16 overflow-hidden transition-colors"
+      className="relative bg-[#FAF8FE] py-16 sm:py-20 lg:py-28 overflow-hidden"
+      aria-labelledby="programmes-heading"
     >
-      <div className="mx-auto max-w-5xl px-5 sm:px-8">
-        
+      <div id="programmes" />
+      <div id="quiz" />
+
+      {/* Subtle background ambient auras */}
+      <div
+        className="pointer-events-none absolute top-10 left-1/4 h-[450px] w-[450px] rounded-full bg-purple-200/20 blur-3xl"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute bottom-10 right-1/4 h-[400px] w-[400px] rounded-full bg-emerald-100/25 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-[1240px] px-6 sm:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#23092F] leading-tight tracking-tight">
-            Here are the ways we can help.
+        <div className="text-center max-w-2xl mx-auto">
+          <div className="text-[12px] sm:text-[13px] font-bold tracking-[0.18em] uppercase text-[#784AE8]">
+            CHOOSE YOUR STARTING POINT.
+          </div>
+
+          <h2
+            id="programmes-heading"
+            className="mt-3.5 font-display text-[30px] sm:text-[44px] lg:text-[54px] font-semibold text-[#1F0E2E] tracking-tight leading-[1.12]"
+          >
+            Four ways forward.
           </h2>
-          <p className="font-sans text-xs sm:text-[13px] text-[#6B4F66] font-normal mt-2">
-            Every path starts with the assessment — not a discovery call.
+
+          <p className="mt-3.5 text-[16px] sm:text-[17.5px] leading-relaxed text-[#5A4860] font-normal">
+            Start with the question your family needs answered most.
           </p>
         </div>
 
-        {/* 3 Pricing / Programme Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 items-stretch">
-          {PROGRAMMES.map((prog) => {
+        {/* 4 Cards Grid */}
+        <div className="mt-14 sm:mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch">
+          {plans.map((plan) => {
             return (
               <div
-                key={prog.id}
-                className={`bg-white rounded-2xl p-5 sm:p-5.5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all duration-200 relative ${prog.borderColor}`}
+                key={plan.id}
+                className={`relative flex flex-col justify-between rounded-2xl sm:rounded-3xl p-6 sm:p-7 transition-all duration-300 ${
+                  plan.isPopular
+                    ? "bg-white border-2 border-[#784AE8] shadow-[0_14px_40px_rgba(120,74,232,0.14)] hover:shadow-2xl hover:-translate-y-1.5 z-20"
+                    : plan.isComingSoon
+                    ? "bg-[#F9F8FA] border border-slate-200/80 hover:border-slate-300 hover:shadow-md"
+                    : "bg-white border border-slate-100 shadow-[0_4px_24px_rgba(35,9,47,0.04)] hover:shadow-xl hover:-translate-y-1 hover:border-purple-200/70"
+                }`}
               >
-                {/* Top Section */}
-                <div>
-                  {/* Most Popular Badge for Center Card */}
-                  {prog.isPopular ? (
-                    <div className="inline-flex items-center gap-1.5 rounded-full bg-[#4A1A6B] text-white px-2.5 py-0.5 font-sans text-[11px] font-semibold shadow-xs mb-2.5">
-                      <span className="text-[#FFD105] text-[11px]">★</span>
-                      <span>Most popular</span>
-                    </div>
-                  ) : null}
-
-                  {/* Age Tag */}
-                  <div
-                    className={`font-sans text-[11px] sm:text-xs font-semibold tracking-wide ${prog.ageColor} mb-1`}
-                  >
-                    {prog.age}
+                {/* Most Popular Floating Pill */}
+                {plan.isPopular && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#784AE8] px-4 py-1 text-[10.5px] font-bold tracking-[0.14em] uppercase text-white shadow-sm">
+                    MOST POPULAR
                   </div>
+                )}
 
-                  {/* Card Title in Fraunces */}
-                  <h3 className="font-display text-lg sm:text-xl font-bold text-[#23092F] tracking-tight mb-1.5">
-                    {prog.title}
+                <div>
+                  {/* Coming Soon Pill */}
+                  {plan.isComingSoon && (
+                    <div className="mb-2.5 inline-block rounded-full bg-slate-100 px-3 py-1 text-[10px] font-bold tracking-[0.14em] uppercase text-slate-500">
+                      COMING SOON
+                    </div>
+                  )}
+
+                  {/* Title */}
+                  <h3 className="font-display text-[20px] sm:text-[22px] font-bold tracking-tight text-[#1F0E2E]">
+                    {plan.title}
                   </h3>
 
-                  {/* Short Description in DM Sans */}
-                  <p className="font-sans text-xs text-[#6B4F66] font-normal leading-relaxed mb-4 sm:mb-5">
-                    {prog.description}
+                  {/* Description */}
+                  <p
+                    className={`mt-2 text-[13.5px] sm:text-[14.5px] leading-relaxed min-h-[44px] ${
+                      plan.isComingSoon ? "text-slate-500" : "text-[#5A4860]"
+                    }`}
+                  >
+                    {plan.description}
                   </p>
 
-                  {/* What's Included Section */}
-                  <div>
-                    <span className="block font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-[#6B4F66]/70 mb-2.5">
+                  {/* Divider */}
+                  <div className="mt-5 pt-4 border-t border-slate-100">
+                    <span
+                      className={`block text-[11px] font-bold tracking-[0.14em] uppercase mb-3.5 ${
+                        plan.isComingSoon ? "text-slate-400" : "text-[#784AE8]"
+                      }`}
+                    >
                       WHAT'S INCLUDED
                     </span>
 
-                    {/* Checklist */}
-                    <ul className="space-y-2 font-sans text-xs sm:text-[12.5px] text-[#23092F]/85">
-                      {prog.items.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
+                    {/* Features List */}
+                    <ul className="space-y-3">
+                      {plan.items.map((item, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5">
+                          {plan.isComingSoon ? (
+                            <Check className="h-4 w-4 stroke-[2.2] text-slate-400 shrink-0 mt-0.5" />
+                          ) : (
+                            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-[#E6F8F0] text-[#10B981] shrink-0 mt-0.5">
+                              <Check className="h-3 w-3 stroke-[2.5]" />
+                            </div>
+                          )}
                           <span
-                            className={`font-bold select-none text-xs sm:text-[13px] mt-0.5 shrink-0 ${prog.checkColor}`}
+                            className={`text-[13.5px] sm:text-[14px] leading-snug font-medium ${
+                              plan.isComingSoon ? "text-slate-500" : "text-[#1F0E2E]"
+                            }`}
                           >
-                            ✓
-                          </span>
-                          <span className="font-medium text-[#23092F]/85 leading-snug">
                             {item}
                           </span>
                         </li>
@@ -142,21 +178,39 @@ export function WaysWeCanHelp() {
                   </div>
                 </div>
 
-                {/* Bottom CTA Button */}
-                <div className="pt-6">
-                  <a
-                    href={`#enroll-${prog.id}`}
-                    className={`w-full block text-center font-sans font-semibold text-xs sm:text-[13px] py-2.5 px-3.5 rounded-xl transition-all duration-150 cursor-pointer ${prog.buttonBg}`}
-                  >
-                    {prog.buttonText}
-                  </a>
+                {/* Bottom Action Button */}
+                <div className="mt-8 pt-2">
+                  {plan.isComingSoon ? (
+                    <div className="w-full text-center rounded-xl bg-slate-100/90 py-3 px-4 text-[13.5px] font-medium text-slate-400 cursor-not-allowed select-none">
+                      {plan.buttonText}
+                    </div>
+                  ) : plan.isPopular ? (
+                    <a
+                      href={plan.href}
+                      className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#784AE8] py-3 px-4 text-[14px] sm:text-[14.5px] font-semibold text-white shadow-[0_8px_20px_rgba(120,74,232,0.35)] transition-all duration-200 hover:bg-[#6839DC] hover:shadow-[0_12px_26px_rgba(120,74,232,0.5)] active:translate-y-0"
+                    >
+                      <span>{plan.buttonText}</span>
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+                    </a>
+                  ) : (
+                    <a
+                      href={plan.href}
+                      className="group w-full inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white py-3 px-4 text-[14px] sm:text-[14.5px] font-semibold text-[#1F0E2E] transition-all duration-200 hover:border-[#784AE8] hover:text-[#784AE8] hover:bg-purple-50/40 active:translate-y-0"
+                    >
+                      <span>{plan.buttonText}</span>
+                      <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 text-slate-400 group-hover:text-[#784AE8]" />
+                    </a>
+                  )}
                 </div>
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );
 }
+
+// Re-exports for backward compatibility
+export const Programmes = WaysWeCanHelp;
+export default WaysWeCanHelp;

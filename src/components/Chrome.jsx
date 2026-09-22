@@ -4,8 +4,7 @@ import { ArrowRight, Menu, X } from "lucide-react";
 
 const NAV = [
   { label: "How it works", href: "#how-it-works" },
-  { label: "The quiz", href: "#quiz" },
-  { label: "Assessment", href: "#full-assessment" },
+  { label: "Our Approach", href: "#approach" },
   { label: "Programmes", href: "#ways-we-help" },
   { label: "FAQ", href: "#faq" },
 ];

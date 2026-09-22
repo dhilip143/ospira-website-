@@ -8,7 +8,9 @@ export { FullPictureAssessment } from "./FullPictureAssessment";
 export { WaysWeCanHelp } from "./WaysWeCanHelp";
 export { SimpleJourney } from "./SimpleJourney";
 export { WhyTrustUs } from "./WhyTrustUs";
+export { TestimonialsSection } from "./TestimonialsSection";
 export { FaqSection } from "./FaqSection";
+export { FinalCtaSection } from "./FinalCtaSection";
 
 /* --------------------------- What Ospira is ------------------------------- */
 

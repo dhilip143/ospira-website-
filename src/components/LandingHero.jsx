@@ -1,541 +1,346 @@
-import React, { useEffect, useRef, useState } from "react";
-import { ArrowRight, Check, LockKeyhole, Play } from "lucide-react";
-import gsap from "gsap";
-
-const HEADLINE_WORDS = "Every child has a story worth understanding.".split(" ");
-const heroImage = "/hero-crafting.jpg";
+import React, { useState } from "react";
+import {
+  ArrowRight,
+  Check,
+  Play,
+  Sparkles,
+  Target,
+  Users,
+  Heart,
+  MessageCircle,
+  Lightbulb,
+} from "lucide-react";
 
 export function LandingHero() {
-  const [reduceMotion, setReduceMotion] = useState(false);
-  const containerRef = useRef(null);
-  const visualRef = useRef(null);
-  const pathRevealRef = useRef(null);
-  const tag1Ref = useRef(null);
-  const tag2Ref = useRef(null);
-  const tag3Ref = useRef(null);
+  const [activePillar, setActivePillar] = useState(null);
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const updatePreference = (event) =>
-      setReduceMotion(event?.matches ?? mediaQuery.matches);
-    updatePreference();
-    mediaQuery.addEventListener("change", updatePreference);
-    return () => mediaQuery.removeEventListener("change", updatePreference);
-  }, []);
-
-  useEffect(() => {
-    const tags = [tag1Ref.current, tag2Ref.current, tag3Ref.current].filter(Boolean);
-    const path = pathRevealRef.current;
-    const container = containerRef.current;
-    if (!container) return;
-
-    if (reduceMotion) {
-      const words = container.querySelectorAll(".anim-word");
-      gsap.set(["#eyebrow", "#subhead", "#cta1", "#cta2", "#meta", "#visual", ...tags], {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-      });
-      if (words.length) gsap.set(words, { y: "0%" });
-      if (path) gsap.set(path, { strokeDashoffset: 0 });
-      return;
-    }
-
-    const context = gsap.context(() => {
-      const words = container.querySelectorAll(".anim-word");
-
-      if (path) {
-        gsap.set(path, { strokeDasharray: 1, strokeDashoffset: 1 });
-      }
-
-      // One orchestrated, buttery-smooth load sequence
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      tl.to("#eyebrow", { opacity: 1, y: 0, duration: 0.6 })
-        .to(words, { y: "0%", duration: 0.9, ease: "power4.out", stagger: 0.045 }, "-=0.25")
-        .to("#subhead", { opacity: 1, y: 0, duration: 0.7 }, "-=0.55")
-        .to(["#cta1", "#cta2"], { opacity: 1, y: 0, duration: 0.55, stagger: 0.1 }, "-=0.4")
-        .to("#meta", { opacity: 1, y: 0, duration: 0.55 }, "-=0.3")
-        .to("#visual", { opacity: 1, scale: 1, duration: 0.9, ease: "power3.out" }, "-=0.7");
-
-      if (path) {
-        tl.to(path, { strokeDashoffset: 0, duration: 1.8, ease: "power2.inOut" }, "<");
-      }
-
-      tl.to(tags, { opacity: 1, y: 0, duration: 0.5, stagger: 0.15 }, "-=0.5");
-
-      // Once the tags have landed, hand them off to an endless, gentle bob —
-      // each on its own duration/offset so the three drift instead of syncing
-      tags.forEach((el, i) => {
-        gsap.to(el, {
-          y: "+=" + (10 + i * 3),
-          duration: 2.4 + i * 0.4,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-          delay: 1.1 + i * 0.15,
-        });
-      });
-    }, containerRef);
-
-    return () => context.revert();
-  }, [reduceMotion]);
+  const pillars = [
+    {
+      id: "focus",
+      label: "Focus & Motivation",
+      score: 78,
+      color: "#8FE5C1",
+      trackColor: "bg-emerald-50",
+      iconBg: "bg-[#E6F8F0]",
+      iconColor: "text-[#10B981]",
+      icon: Target,
+      floatClass: "animate-float-pill-1",
+      pos: "top-[4%] -left-3 sm:-left-7 lg:-left-10",
+    },
+    {
+      id: "confidence",
+      label: "Social Confidence",
+      score: 64,
+      color: "#784AE8",
+      trackColor: "bg-purple-50",
+      iconBg: "bg-[#F2EDFD]",
+      iconColor: "text-[#784AE8]",
+      icon: Users,
+      floatClass: "animate-float-pill-2",
+      pos: "top-[3%] -right-2 sm:-right-6 lg:-right-10",
+    },
+    {
+      id: "wellbeing",
+      label: "Emotional Wellbeing",
+      score: 82,
+      color: "#FDBA74",
+      trackColor: "bg-amber-50",
+      iconBg: "bg-[#FFF3E6]",
+      iconColor: "text-[#F97316]",
+      icon: Heart,
+      floatClass: "animate-float-pill-3",
+      pos: "top-[27%] -left-6 sm:-left-12 lg:-left-16",
+    },
+    {
+      id: "communication",
+      label: "Communication",
+      score: 72,
+      color: "#93C5FD",
+      trackColor: "bg-sky-50",
+      iconBg: "bg-[#E8F4FD]",
+      iconColor: "text-[#0284C7]",
+      icon: MessageCircle,
+      floatClass: "animate-float-pill-4",
+      pos: "top-[28%] -right-3 sm:-right-7 lg:-right-11",
+    },
+    {
+      id: "curiosity",
+      label: "Curiosity & Learning",
+      score: 88,
+      color: "#5EEAD4",
+      trackColor: "bg-teal-50",
+      iconBg: "bg-[#E6F9F5]",
+      iconColor: "text-[#0D9488]",
+      icon: Lightbulb,
+      floatClass: "animate-float-pill-5",
+      pos: "top-[47%] -left-4 sm:-left-8 lg:-left-12",
+    },
+  ];
 
   return (
-    <div
-      ref={containerRef}
-      className="landing-hero-container relative overflow-hidden text-[var(--foreground)] bg-[var(--background)] min-h-[calc(100vh-5rem)] flex flex-col justify-center"
+    <section
+      id="top"
+      className="relative overflow-hidden bg-[#FAF9FD] text-[#23092F] pt-6 pb-20 sm:pt-10 sm:pb-28 lg:pt-12 lg:pb-32"
+      aria-labelledby="hero-heading"
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&display=swap');
-
-        .landing-hero-container {
-          --background: #FFFBFF;
-          --foreground: #23092F;
-          --primary: #4A1A6B;
-          --primary-foreground: #FFFBFF;
-          --secondary: #C87E4F;
-          --secondary-foreground: #23092F;
-          --muted: #F5EDF0;
-          --muted-foreground: #6B4F66;
-          --accent: #FFD89E;
-          --accent-foreground: #23092F;
-          --border: #ECE2E6;
-          --card: #FFFFFF;
-          --card-foreground: #23092F;
-          --soft-purple: #F4EAF5;
-          --sage: #8FB8A6;
-          --deep-sage: #3E6F5C;
-          --shadow-photo: 0 32px 75px -36px rgba(35, 9, 47, 0.48);
-          --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-          --font-display: "Lora", Georgia, serif;
-          font-family: var(--font-sans);
+        @keyframes float-1 {
+          0% { transform: translateY(0px) rotate(0deg); }
+          100% { transform: translateY(-10px) rotate(0.8deg); }
+        }
+        @keyframes float-2 {
+          0% { transform: translateY(0px) rotate(0deg); }
+          100% { transform: translateY(-12px) rotate(-0.9deg); }
+        }
+        @keyframes float-3 {
+          0% { transform: translateY(0px) rotate(0deg); }
+          100% { transform: translateY(-10px) rotate(0.6deg); }
+        }
+        @keyframes float-4 {
+          0% { transform: translateY(0px) rotate(0deg); }
+          100% { transform: translateY(-11px) rotate(-0.7deg); }
+        }
+        @keyframes float-5 {
+          0% { transform: translateY(0px) rotate(0deg); }
+          100% { transform: translateY(-9px) rotate(0.7deg); }
+        }
+        @keyframes float-insight {
+          0% { transform: translateY(0px); }
+          100% { transform: translateY(-9px); }
         }
 
-        .landing-hero-container * {
-          box-sizing: border-box;
-          border-color: var(--border);
+        .animate-float-pill-1 {
+          animation: float-1 4.2s ease-in-out infinite alternate;
         }
-
-        .hero-wrap {
-          width: 100%;
-          padding: 40px 32px;
+        .animate-float-pill-2 {
+          animation: float-2 4.8s ease-in-out 0.6s infinite alternate;
         }
-
-        .hero-grid {
-          width: min(1240px, 100%);
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: minmax(0, 1fr) minmax(450px, 0.84fr);
-          align-items: center;
-          gap: clamp(74px, 9vw, 144px);
+        .animate-float-pill-3 {
+          animation: float-3 3.9s ease-in-out 1.2s infinite alternate;
         }
-
-        .hero-copy {
-          padding: 30px 0 26px;
-          max-width: 660px;
+        .animate-float-pill-4 {
+          animation: float-4 4.5s ease-in-out 0.4s infinite alternate;
         }
-
-        .eyebrow {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: var(--deep-sage);
-          font-size: 12px;
-          line-height: 1;
-          font-weight: 800;
-          text-transform: uppercase;
-          letter-spacing: 0.13em;
-          opacity: 0;
-          transform: translateY(10px);
+        .animate-float-pill-5 {
+          animation: float-5 4.1s ease-in-out 1.7s infinite alternate;
         }
-
-        .eyebrow span {
-          width: 24px;
-          height: 2px;
-          background: var(--deep-sage);
-        }
-
-        .hero-title {
-          max-width: 680px;
-          margin: 23px 0 24px;
-          font-family: var(--font-display);
-          font-size: clamp(48px, 5.5vw, 78px);
-          line-height: 1.03;
-          font-weight: 500;
-          letter-spacing: 0;
-        }
-
-        .word-clip {
-          display: inline-block;
-          overflow: hidden;
-          vertical-align: bottom;
-          margin-bottom: -0.12em;
-          padding-bottom: 0.12em;
-        }
-
-        .anim-word {
-          display: inline-block;
-          transform: translateY(115%);
-          will-change: transform;
-        }
-
-        .hero-subhead {
-          max-width: 590px;
-          margin: 0;
-          color: var(--muted-foreground);
-          font-size: 18px;
-          line-height: 1.75;
-          opacity: 0;
-          transform: translateY(14px);
-        }
-
-        .hero-actions {
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: 17px;
-          margin-top: 34px;
-        }
-
-        .primary-action,
-        .secondary-action {
-          min-height: 52px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          border-radius: 6px;
-          font-size: 14px;
-          font-weight: 800;
-          text-decoration: none;
-          opacity: 0;
-          transform: translateY(14px);
-          transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-
-        .primary-action {
-          padding: 0 23px;
-          color: var(--primary-foreground);
-          background: var(--primary);
-          box-shadow: 0 14px 26px -17px var(--primary);
-        }
-
-        .primary-action:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 18px 30px -17px var(--primary);
-        }
-
-        .secondary-action {
-          padding: 0 8px;
-          color: inherit;
-        }
-
-        .secondary-action:hover {
-          color: var(--primary);
-        }
-
-        .play-icon {
-          width: 34px;
-          height: 34px;
-          display: grid;
-          place-items: center;
-          border: 1px solid var(--border);
-          border-radius: 50%;
-          background: var(--card);
-        }
-
-        .hero-meta {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 24px;
-          margin: 34px 0 0;
-          padding: 25px 0 0;
-          list-style: none;
-          border-top: 1px solid var(--border);
-          color: var(--muted-foreground);
-          font-size: 12px;
-          font-weight: 700;
-          opacity: 0;
-          transform: translateY(14px);
-        }
-
-        .hero-meta li {
-          display: flex;
-          align-items: center;
-          gap: 7px;
-        }
-
-        .meta-icon {
-          width: 23px;
-          height: 23px;
-          display: grid;
-          place-items: center;
-          border-radius: 50%;
-          color: var(--deep-sage);
-          background: rgba(143, 184, 166, 0.22);
-        }
-
-        .hero-visual {
-          position: relative;
-          width: 100%;
-          max-width: 520px;
-          justify-self: end;
-          padding-left: 36px;
-          opacity: 0;
-          transform: scale(0.96);
-          transform-origin: center bottom;
-        }
-
-        .image-frame {
-          position: relative;
-          z-index: 1;
-          aspect-ratio: 5 / 6;
-          overflow: hidden;
-          border-radius: 8px 8px 100px 8px;
-          background: var(--soft-purple);
-          box-shadow: var(--shadow-photo);
-        }
-
-        .image-frame img {
-          width: 100%;
-          height: 100%;
-          display: block;
-          object-fit: cover;
-        }
-
-        .image-wash {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            165deg,
-            rgba(74, 26, 107, 0.16),
-            transparent 45%,
-            rgba(200, 126, 79, 0.12)
-          );
-          mix-blend-mode: multiply;
-          pointer-events: none;
-        }
-
-        .image-note {
-          position: absolute;
-          z-index: 2;
-          right: 22px;
-          bottom: 22px;
-          display: flex;
-          flex-direction: column;
-          padding: 13px 16px;
-          border-radius: 5px;
-          color: var(--foreground);
-          background: rgba(255, 255, 255, 0.91);
-          backdrop-filter: blur(8px);
-          font-size: 12px;
-        }
-
-        .image-note strong {
-          font-family: var(--font-display);
-          font-size: 16px;
-        }
-
-        .journey-line {
-          position: absolute;
-          z-index: 2;
-          left: -64px;
-          top: -14px;
-          height: calc(100% + 28px);
-          width: 178px;
-          color: var(--secondary);
-          overflow: visible;
-          pointer-events: none;
-        }
-
-        .journey-tag {
-          position: absolute;
-          z-index: 3;
-          width: 142px;
-          height: 45px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 6px 12px 6px 7px;
-          border: 1px solid rgba(74, 26, 107, 0.13);
-          border-radius: 5px;
-          color: var(--primary);
-          background: var(--card);
-          box-shadow: 0 12px 25px -17px rgba(35, 9, 47, 0.5);
-          font-size: 13px;
-          font-weight: 800;
-          will-change: transform;
-          opacity: 0;
-          transform: translateY(18px);
-        }
-
-        .tag-index {
-          width: 31px;
-          height: 31px;
-          display: grid;
-          place-items: center;
-          border-radius: 3px;
-          color: var(--primary-foreground);
-          background: var(--primary);
-          font-family: var(--font-display);
-          font-size: 11px;
-        }
-
-        .tag-one { left: -86px; top: 12%; }
-        .tag-two { left: -49px; top: 47%; }
-        .tag-three { left: -75px; bottom: 9%; }
-
-        @media (max-width: 980px) {
-          .hero-wrap { padding: 48px 24px; }
-          .hero-grid { grid-template-columns: 1fr; gap: 54px; }
-          .hero-copy { max-width: 740px; }
-          .hero-visual { justify-self: center; width: min(90%, 560px); }
-        }
-
-        @media (max-width: 640px) {
-          .hero-wrap { padding: 36px 18px; }
-          .hero-title { font-size: 46px; }
-          .hero-subhead { font-size: 16px; line-height: 1.65; }
-          .hero-actions { align-items: stretch; flex-direction: column; }
-          .primary-action, .secondary-action { width: 100%; }
-          .secondary-action { border: 1px solid var(--border); }
-          .hero-meta { gap: 14px 20px; }
-          .hero-visual { width: calc(100% - 30px); padding-left: 0; margin-left: 30px; }
-          .journey-line { left: -50px; width: 132px; }
-          .journey-tag { width: 121px; height: 40px; font-size: 11px; padding: 5px; }
-          .tag-index { width: 28px; height: 28px; }
-          .tag-one { left: -45px; }
-          .tag-two { left: -30px; }
-          .tag-three { left: -44px; }
+        .animate-float-card {
+          animation: float-insight 5.2s ease-in-out 0.8s infinite alternate;
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .eyebrow,
-          .hero-subhead,
-          .primary-action,
-          .secondary-action,
-          .hero-meta,
-          .hero-visual,
-          .anim-word,
-          .journey-tag {
-            opacity: 1 !important;
-            transform: none !important;
+          .animate-float-pill-1,
+          .animate-float-pill-2,
+          .animate-float-pill-3,
+          .animate-float-pill-4,
+          .animate-float-pill-5,
+          .animate-float-card {
+            animation: none !important;
           }
         }
       `}</style>
 
-      <section id="top" className="hero-wrap" aria-labelledby="hero-heading">
-        <div className="hero-grid">
-          <div className="hero-copy">
-            <div id="eyebrow" className="eyebrow">
-              <span aria-hidden="true" /> Science-backed child development
+      {/* Fresh organic mint glow at bottom-left exactly as in Figma design */}
+      <div
+        className="pointer-events-none absolute -bottom-28 -left-24 h-[440px] w-[440px] rounded-full bg-[#B6F0DE]/55 blur-[80px]"
+        aria-hidden="true"
+      />
+      {/* Soft lavender atmospheric backlight */}
+      <div
+        className="pointer-events-none absolute top-10 right-1/4 h-[450px] w-[450px] rounded-full bg-purple-200/35 blur-[90px]"
+        aria-hidden="true"
+      />
+
+      <div className="mx-auto max-w-[1240px] px-6 sm:px-8">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.02fr] lg:gap-10 xl:gap-16">
+          {/* Left Column: Copy & Actions */}
+          <div className="relative z-10 flex flex-col items-start max-w-[590px]">
+            {/* Eyebrow Pill */}
+            <div className="inline-flex items-center gap-2 rounded-full border border-purple-100/90 bg-white/90 px-3.5 py-1.5 text-[12.5px] sm:text-[13px] font-medium text-[#23092F] shadow-xs backdrop-blur-md">
+              <Sparkles className="h-3.5 w-3.5 text-[#784AE8]" />
+              <span>Science-backed clarity, for the whole family</span>
             </div>
-            <h1 id="hero-heading" className="hero-title">
-              {HEADLINE_WORDS.map((word, index) => (
-                <span className="word-clip" key={`${word}-${index}`}>
-                  <span className="anim-word">{word}&nbsp;</span>
-                </span>
-              ))}
+
+            {/* Main Headline */}
+            <h1
+              id="hero-heading"
+              className="mt-6 font-display text-[34px] xs:text-[40px] sm:text-[54px] lg:text-[66px] xl:text-[74px] font-semibold leading-[1.08] tracking-[-0.02em] text-[#1F0E2E]"
+            >
+              Is your child <br className="hidden sm:inline" />
+              ready{" "}
+              <span className="text-[#6E42E5]">
+                for life?
+              </span>
             </h1>
-            <p id="subhead" className="hero-subhead">
-              Growing Minds maps how your child thinks, learns, and connects—then turns those
-              insights into a calm, practical path forward for your family.
+
+            {/* Subheading */}
+            <p className="mt-5 text-[16px] sm:text-[17px] leading-[1.68] text-[#5A4860]">
+              Discover your child’s strengths, challenges, and readiness for what’s ahead — through
+              a personalized, science-backed assessment for both of you.
             </p>
 
-            <div className="hero-actions">
-              <a href="#quiz" id="cta1" className="primary-action">
-                Start the free check-in <ArrowRight size={18} />
+            {/* CTA Buttons */}
+            <div className="mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
+              <a
+                href="#quiz"
+                className="group inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#784AE8] px-6 sm:px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_12px_28px_-6px_rgba(120,74,232,0.48)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#6839DC] hover:shadow-[0_16px_32px_-6px_rgba(120,74,232,0.6)] active:translate-y-0"
+              >
+                <span>Start the free check-in</span>
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
               </a>
-              <a href="#how-it-works" id="cta2" className="secondary-action">
-                <span className="play-icon">
-                  <Play size={13} fill="currentColor" />
-                </span>
-                See how it works
+
+              <a
+                href="#how-it-works"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-[#DFD7E8] bg-white/80 px-5 sm:px-6 py-3.5 text-[15px] font-semibold text-[#23092F] shadow-xs backdrop-blur-sm transition-all duration-200 hover:bg-white hover:border-[#784AE8]/40 hover:text-[#784AE8]"
+              >
+                <Play className="h-4 w-4 text-[#784AE8] fill-[#784AE8]/20" />
+                <span>See how it works (60s)</span>
               </a>
             </div>
 
-            <ul id="meta" className="hero-meta" aria-label="Check-in details">
-              <li>
-                <span className="meta-icon">
-                  <Check size={14} />
-                </span>
-                Ages 4–18
-              </li>
-              <li>
-                <span className="meta-icon">
-                  <Check size={14} />
-                </span>
-                10-minute check-in
-              </li>
-              <li>
-                <span className="meta-icon">
-                  <LockKeyhole size={13} />
-                </span>
-                Private &amp; secure
-              </li>
-            </ul>
-          </div>
-
-          <div id="visual" className="hero-visual" ref={visualRef}>
-            <div className="image-frame">
-              <img
-                src={heroImage}
-                alt="A mother and daughter sharing a high-five while learning together"
-                width={1200}
-                height={1440}
-                loading="eager"
-              />
-              <div className="image-wash" aria-hidden="true" />
-              <div className="image-note">
-                <strong>Small moments.</strong>
-                <span>Meaningful signals.</span>
+            {/* Trust / Feature Checkmarks */}
+            <div className="mt-9 flex flex-wrap items-center gap-y-2 gap-x-5 text-[13px] font-medium text-[#2E1838]">
+              <div className="inline-flex items-center gap-1.5">
+                <Check className="h-4 w-4 stroke-[2.5] text-[#10B981]" />
+                <span>Ages 10–21+</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5">
+                <Check className="h-4 w-4 stroke-[2.5] text-[#10B981]" />
+                <span>Science-backed</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5">
+                <Check className="h-4 w-4 stroke-[2.5] text-[#10B981]" />
+                <span>No sign-up needed</span>
               </div>
             </div>
+          </div>
 
-            <svg className="journey-line" viewBox="0 0 180 620" fill="none" aria-hidden="true">
-              <defs>
-                <mask id="path-reveal">
-                  <path
-                    ref={pathRevealRef}
-                    pathLength="1"
-                    d="M151 22C40 54 24 121 94 178C170 240 159 311 77 350C-3 389 8 480 105 511C158 528 168 566 130 601"
-                    stroke="white"
-                    strokeWidth="12"
-                    strokeLinecap="round"
-                  />
-                </mask>
-              </defs>
-              <path
-                d="M151 22C40 54 24 121 94 178C170 240 159 311 77 350C-3 389 8 480 105 511C158 528 168 566 130 601"
-                stroke="currentColor"
-                strokeWidth="4"
-                strokeLinecap="round"
-                strokeDasharray="2 13"
-                mask="url(#path-reveal)"
-              />
-              <circle cx="151" cy="22" r="5" fill="currentColor" />
-              <circle cx="130" cy="601" r="5" fill="currentColor" />
-            </svg>
+          {/* Right Column: Visual Composition with Circular Avatar, 5 Floating Badges, & 2 Overlapping Cards */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[480px] sm:max-w-[530px] pt-4 pb-8 sm:pb-12">
+              
+              {/* Central Portrait Circle Frame */}
+              <div className="relative mx-auto w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[390px] lg:h-[390px] rounded-full border-[7px] border-white bg-[#E9E4F0] shadow-[0_24px_60px_-15px_rgba(35,9,47,0.18)] ring-1 ring-purple-100/70 overflow-hidden select-none">
+                <img
+                  src="/hero-teen.jpg"
+                  alt="Thoughtful teenage boy smiling"
+                  className="h-full w-full object-cover object-center"
+                  loading="eager"
+                />
+                <div
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#23092F]/15 via-transparent to-transparent"
+                  aria-hidden="true"
+                />
+              </div>
 
-            <div ref={tag1Ref} className="journey-tag badge-tag tag-one">
-              <span className="tag-index">01</span>
-              <span>Curiosity</span>
-            </div>
-            <div ref={tag2Ref} className="journey-tag badge-tag tag-two">
-              <span className="tag-index">02</span>
-              <span>Confidence</span>
-            </div>
-            <div ref={tag3Ref} className="journey-tag badge-tag tag-three">
-              <span className="tag-index">03</span>
-              <span>Clarity</span>
+              {/* The 5 Floating Pillar Badges around the circle */}
+              {pillars.map((pillar) => {
+                const IconComponent = pillar.icon;
+                const isHovered = activePillar === pillar.id;
+
+                return (
+                  <div
+                    key={pillar.id}
+                    onMouseEnter={() => setActivePillar(pillar.id)}
+                    onMouseLeave={() => setActivePillar(null)}
+                    className={`absolute z-30 cursor-pointer ${pillar.pos} ${pillar.floatClass}`}
+                    style={{
+                      animationPlayState: isHovered ? "paused" : "running",
+                    }}
+                  >
+                    <div
+                      className={`inline-flex items-center gap-2.5 rounded-full border bg-white/95 px-3 py-1.5 sm:px-3.5 sm:py-2 backdrop-blur-md transition-all duration-300 select-none ${
+                        isHovered
+                          ? "scale-105 border-[#784AE8]/50 shadow-[0_16px_36px_-6px_rgba(120,74,232,0.35)]"
+                          : "border-slate-100/90 shadow-[0_8px_24px_-4px_rgba(35,9,47,0.12)] hover:shadow-lg"
+                      }`}
+                    >
+                      <div
+                        className={`flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full ${pillar.iconBg} ${pillar.iconColor}`}
+                      >
+                        <IconComponent className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                      </div>
+                      <span className="text-[12px] sm:text-[13px] font-bold tracking-tight text-[#1F0E2E] pr-1 whitespace-nowrap">
+                        {pillar.label}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+
+              {/* Bottom Overlapping Composition: Development Profile Card + Key Insight Card */}
+              <div className="relative -mt-4 sm:-mt-8 z-20">
+                {/* Card 1: Your Child's Development Profile */}
+                <div className="w-[88%] sm:w-[370px] rounded-2xl sm:rounded-3xl border border-slate-100 bg-white p-4 sm:p-5 shadow-[0_24px_55px_-12px_rgba(35,9,47,0.15)] transition-all duration-300">
+                  <div className="flex items-start justify-between pb-2.5 border-b border-slate-100/80">
+                    <h3 className="font-display text-[14.5px] sm:text-[15.5px] font-bold text-[#1F0E2E] leading-snug">
+                      Your Child’s Development<br className="hidden sm:inline" /> Profile
+                    </h3>
+                    <a
+                      href="#quiz"
+                      className="text-[11px] sm:text-[11.5px] font-semibold text-[#784AE8] hover:text-[#5821C7] transition-colors flex items-center gap-0.5 whitespace-nowrap mt-0.5"
+                    >
+                      <span>View Detailed</span>
+                      <ArrowRight className="h-3 w-3" />
+                    </a>
+                  </div>
+
+                  {/* 5 Progress Bars matching the 5 pillars */}
+                  <div className="mt-3 space-y-2">
+                    {pillars.map((pillar) => {
+                      const isHighlighted = activePillar === pillar.id;
+                      return (
+                        <div
+                          key={pillar.id}
+                          onMouseEnter={() => setActivePillar(pillar.id)}
+                          onMouseLeave={() => setActivePillar(null)}
+                          className={`flex items-center justify-between gap-3 text-[11px] sm:text-[11.5px] transition-colors duration-200 cursor-pointer rounded px-1 -mx-1 ${
+                            isHighlighted ? "bg-purple-50/70" : ""
+                          }`}
+                        >
+                          <span className="font-medium text-[#2E1838] w-[125px] sm:w-[135px] shrink-0 truncate">
+                            {pillar.label}
+                          </span>
+                          <div className={`h-1.5 sm:h-2 flex-1 rounded-full ${pillar.trackColor} overflow-hidden`}>
+                            <div
+                              className="h-full rounded-full transition-all duration-500 ease-out"
+                              style={{
+                                width: `${pillar.score}%`,
+                                backgroundColor: pillar.color,
+                              }}
+                            />
+                          </div>
+                          <span className="font-semibold text-slate-400 w-7 text-right shrink-0">
+                            {pillar.score}%
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Card 2: Floating Key Insight Card overlapping on the right */}
+                <div className="animate-float-card absolute top-3 -right-2 sm:-right-6 lg:-right-10 z-30 w-[185px] sm:w-[215px] rounded-2xl border border-purple-100/90 bg-white p-3.5 sm:p-4 shadow-[0_20px_45px_-10px_rgba(35,9,47,0.18)]">
+                  <div className="flex items-center gap-1.5 text-[12px] sm:text-[12.5px] font-bold text-[#784AE8]">
+                    <Sparkles className="h-3.5 w-3.5 shrink-0" />
+                    <span>Key Insight</span>
+                  </div>
+                  <p className="mt-1.5 text-[10.5px] sm:text-[11px] leading-relaxed text-[#4A3B52]">
+                    They show strong curiosity, but confidence drops when expectations feel unclear.
+                  </p>
+                  <span className="mt-2 block text-[9.5px] sm:text-[10px] font-medium text-slate-400">
+                    Dynamic report preview
+                  </span>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <div id="check-in" />
-    </div>
+    </section>
   );
 }
 
